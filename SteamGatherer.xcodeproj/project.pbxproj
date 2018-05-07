@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30D136314FFC8139C63FCED9 /* Pods_SteamGatherer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFE2AF473FC577E59E02F2A8 /* Pods_SteamGatherer.framework */; };
 		34CE860820A08C32002EE744 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CE860720A08C32002EE744 /* AppDelegate.swift */; };
 		34CE860A20A08C32002EE744 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CE860920A08C32002EE744 /* ViewController.swift */; };
-		34CE860D20A08C33002EE744 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34CE860B20A08C33002EE744 /* Main.storyboard */; };
 		34CE860F20A08C33002EE744 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34CE860E20A08C33002EE744 /* Assets.xcassets */; };
 		34CE861220A08C33002EE744 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34CE861020A08C33002EE744 /* LaunchScreen.storyboard */; };
 		34CE861D20A08C34002EE744 /* SteamGathererTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CE861C20A08C34002EE744 /* SteamGathererTests.swift */; };
 		34CE862820A08C34002EE744 /* SteamGathererUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CE862720A08C34002EE744 /* SteamGathererUITests.swift */; };
+		87172ADE28A6A4607CE0D664 /* Pods_SteamGathererUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3343A29159E7442341D1F7B6 /* Pods_SteamGathererUITests.framework */; };
+		E8EFD3D0B1785F917A3D73A1 /* Pods_SteamGathererTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1888F817C14E0318E241025 /* Pods_SteamGathererTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,10 +36,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		21862F992E79EBC22B2A2A67 /* Pods-SteamGathererTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SteamGathererTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SteamGathererTests/Pods-SteamGathererTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3343A29159E7442341D1F7B6 /* Pods_SteamGathererUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SteamGathererUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		34CE860420A08C32002EE744 /* SteamGatherer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SteamGatherer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34CE860720A08C32002EE744 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34CE860920A08C32002EE744 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		34CE860C20A08C33002EE744 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		34CE860E20A08C33002EE744 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		34CE861120A08C33002EE744 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		34CE861320A08C33002EE744 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +50,13 @@
 		34CE862320A08C34002EE744 /* SteamGathererUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SteamGathererUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		34CE862720A08C34002EE744 /* SteamGathererUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamGathererUITests.swift; sourceTree = "<group>"; };
 		34CE862920A08C34002EE744 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43801131ECB005629918E5C4 /* Pods-SteamGatherer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SteamGatherer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SteamGatherer/Pods-SteamGatherer.debug.xcconfig"; sourceTree = "<group>"; };
+		96FEF6FA3CF9E625D37A5845 /* Pods-SteamGathererUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SteamGathererUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SteamGathererUITests/Pods-SteamGathererUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		A3E4921E950A4E65AA3483CD /* Pods-SteamGathererTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SteamGathererTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SteamGathererTests/Pods-SteamGathererTests.release.xcconfig"; sourceTree = "<group>"; };
+		D1888F817C14E0318E241025 /* Pods_SteamGathererTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SteamGathererTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFE2AF473FC577E59E02F2A8 /* Pods_SteamGatherer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SteamGatherer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAC89A3CEA396AF7894DA62D /* Pods-SteamGatherer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SteamGatherer.release.xcconfig"; path = "Pods/Target Support Files/Pods-SteamGatherer/Pods-SteamGatherer.release.xcconfig"; sourceTree = "<group>"; };
+		FF4B298EA9E74590FC247607 /* Pods-SteamGathererUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SteamGathererUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SteamGathererUITests/Pods-SteamGathererUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30D136314FFC8139C63FCED9 /* Pods_SteamGatherer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8EFD3D0B1785F917A3D73A1 /* Pods_SteamGathererTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87172ADE28A6A4607CE0D664 /* Pods_SteamGathererUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,9 +91,12 @@
 			isa = PBXGroup;
 			children = (
 				34CE860620A08C32002EE744 /* SteamGatherer */,
+				34CE863520A08CF4002EE744 /* Core */,
 				34CE861B20A08C34002EE744 /* SteamGathererTests */,
 				34CE862620A08C34002EE744 /* SteamGathererUITests */,
 				34CE860520A08C32002EE744 /* Products */,
+				A5AE4ED5D35B9BA5EDEB832E /* Pods */,
+				E76E68C64FE4C59678F97589 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,7 +115,6 @@
 			children = (
 				34CE860720A08C32002EE744 /* AppDelegate.swift */,
 				34CE860920A08C32002EE744 /* ViewController.swift */,
-				34CE860B20A08C33002EE744 /* Main.storyboard */,
 				34CE860E20A08C33002EE744 /* Assets.xcassets */,
 				34CE861020A08C33002EE744 /* LaunchScreen.storyboard */,
 				34CE861320A08C33002EE744 /* Info.plist */,
@@ -125,6 +140,36 @@
 			path = SteamGathererUITests;
 			sourceTree = "<group>";
 		};
+		34CE863520A08CF4002EE744 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		A5AE4ED5D35B9BA5EDEB832E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				43801131ECB005629918E5C4 /* Pods-SteamGatherer.debug.xcconfig */,
+				FAC89A3CEA396AF7894DA62D /* Pods-SteamGatherer.release.xcconfig */,
+				21862F992E79EBC22B2A2A67 /* Pods-SteamGathererTests.debug.xcconfig */,
+				A3E4921E950A4E65AA3483CD /* Pods-SteamGathererTests.release.xcconfig */,
+				96FEF6FA3CF9E625D37A5845 /* Pods-SteamGathererUITests.debug.xcconfig */,
+				FF4B298EA9E74590FC247607 /* Pods-SteamGathererUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E76E68C64FE4C59678F97589 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EFE2AF473FC577E59E02F2A8 /* Pods_SteamGatherer.framework */,
+				D1888F817C14E0318E241025 /* Pods_SteamGathererTests.framework */,
+				3343A29159E7442341D1F7B6 /* Pods_SteamGathererUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +177,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 34CE862C20A08C34002EE744 /* Build configuration list for PBXNativeTarget "SteamGatherer" */;
 			buildPhases = (
+				2A3A3A2BBB4EB11ED1CD80EC /* [CP] Check Pods Manifest.lock */,
 				34CE860020A08C32002EE744 /* Sources */,
 				34CE860120A08C32002EE744 /* Frameworks */,
 				34CE860220A08C32002EE744 /* Resources */,
+				D2A8F5C7373A11144657F641 /* [CP] Embed Pods Frameworks */,
+				39A5F04049D4E2BEB23851E9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,9 +197,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 34CE862F20A08C34002EE744 /* Build configuration list for PBXNativeTarget "SteamGathererTests" */;
 			buildPhases = (
+				103A01795D86F74720F456F8 /* [CP] Check Pods Manifest.lock */,
 				34CE861420A08C34002EE744 /* Sources */,
 				34CE861520A08C34002EE744 /* Frameworks */,
 				34CE861620A08C34002EE744 /* Resources */,
+				A5FCCE43780E0D89506F1CF8 /* [CP] Embed Pods Frameworks */,
+				AC6E51519738771333CCDC36 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -167,9 +218,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 34CE863220A08C34002EE744 /* Build configuration list for PBXNativeTarget "SteamGathererUITests" */;
 			buildPhases = (
+				FB3D08B725C481F4EC1B1947 /* [CP] Check Pods Manifest.lock */,
 				34CE861F20A08C34002EE744 /* Sources */,
 				34CE862020A08C34002EE744 /* Frameworks */,
 				34CE862120A08C34002EE744 /* Resources */,
+				C5512031E1269CFF58BAA984 /* [CP] Embed Pods Frameworks */,
+				C2F66A066D6BF72C3D001D35 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -231,7 +285,6 @@
 			files = (
 				34CE861220A08C33002EE744 /* LaunchScreen.storyboard in Resources */,
 				34CE860F20A08C33002EE744 /* Assets.xcassets in Resources */,
-				34CE860D20A08C33002EE744 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +303,153 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		103A01795D86F74720F456F8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SteamGathererTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2A3A3A2BBB4EB11ED1CD80EC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SteamGatherer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		39A5F04049D4E2BEB23851E9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SteamGatherer/Pods-SteamGatherer-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A5FCCE43780E0D89506F1CF8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SteamGathererTests/Pods-SteamGathererTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AC6E51519738771333CCDC36 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SteamGathererTests/Pods-SteamGathererTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C2F66A066D6BF72C3D001D35 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SteamGathererUITests/Pods-SteamGathererUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C5512031E1269CFF58BAA984 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SteamGathererUITests/Pods-SteamGathererUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D2A8F5C7373A11144657F641 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SteamGatherer/Pods-SteamGatherer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB3D08B725C481F4EC1B1947 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SteamGathererUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		34CE860020A08C32002EE744 /* Sources */ = {
@@ -293,14 +493,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		34CE860B20A08C33002EE744 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				34CE860C20A08C33002EE744 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		34CE861020A08C33002EE744 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -428,6 +620,7 @@
 		};
 		34CE862D20A08C34002EE744 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43801131ECB005629918E5C4 /* Pods-SteamGatherer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -445,6 +638,7 @@
 		};
 		34CE862E20A08C34002EE744 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FAC89A3CEA396AF7894DA62D /* Pods-SteamGatherer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -462,6 +656,7 @@
 		};
 		34CE863020A08C34002EE744 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 21862F992E79EBC22B2A2A67 /* Pods-SteamGathererTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -482,6 +677,7 @@
 		};
 		34CE863120A08C34002EE744 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A3E4921E950A4E65AA3483CD /* Pods-SteamGathererTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -502,6 +698,7 @@
 		};
 		34CE863320A08C34002EE744 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 96FEF6FA3CF9E625D37A5845 /* Pods-SteamGathererUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -521,6 +718,7 @@
 		};
 		34CE863420A08C34002EE744 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF4B298EA9E74590FC247607 /* Pods-SteamGathererUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
