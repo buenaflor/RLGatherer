@@ -8,12 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		30D136314FFC8139C63FCED9 /* Pods_SteamGatherer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFE2AF473FC577E59E02F2A8 /* Pods_SteamGatherer.framework */; };
+		3415C8E420A09134009CBF30 /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3415C8E320A09134009CBF30 /* Shared.swift */; };
+		3415C8E620A09330009CBF30 /* UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3415C8E520A09330009CBF30 /* UIKit.swift */; };
+		3415C8E920A093C6009CBF30 /* BaseViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3415C8E820A093C6009CBF30 /* BaseViews.swift */; };
+		3415C8FA20A09690009CBF30 /* DINPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3415C8EF20A0946C009CBF30 /* DINPro-Bold.otf */; };
+		3415C8FB20A09695009CBF30 /* DINPro-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3415C8EE20A0946C009CBF30 /* DINPro-Black.otf */; };
+		3415C8FC20A09697009CBF30 /* DINPro-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3415C8EB20A0946C009CBF30 /* DINPro-Light.otf */; };
+		3415C8FD20A09699009CBF30 /* DINPro-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3415C8EC20A0946C009CBF30 /* DINPro-Medium.otf */; };
+		3415C8FE20A0969D009CBF30 /* DINPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3415C8ED20A0946C009CBF30 /* DINPro-Regular.otf */; };
+		3415C90020A096ED009CBF30 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3415C8FF20A096ED009CBF30 /* Images.xcassets */; };
+		3415C90220A09711009CBF30 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3415C90120A09711009CBF30 /* UIColor.swift */; };
+		3415C90420A09E73009CBF30 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3415C90320A09E73009CBF30 /* RegisterViewController.swift */; };
+		3415C90620A09FF6009CBF30 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3415C90520A09FF6009CBF30 /* SessionManager.swift */; };
+		3415C90920A0A0A8009CBF30 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3415C90820A0A0A8009CBF30 /* MainViewController.swift */; };
 		34CE860820A08C32002EE744 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CE860720A08C32002EE744 /* AppDelegate.swift */; };
-		34CE860A20A08C32002EE744 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CE860920A08C32002EE744 /* ViewController.swift */; };
+		34CE860A20A08C32002EE744 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CE860920A08C32002EE744 /* LoginViewController.swift */; };
 		34CE860F20A08C33002EE744 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34CE860E20A08C33002EE744 /* Assets.xcassets */; };
 		34CE861220A08C33002EE744 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34CE861020A08C33002EE744 /* LaunchScreen.storyboard */; };
 		34CE861D20A08C34002EE744 /* SteamGathererTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CE861C20A08C34002EE744 /* SteamGathererTests.swift */; };
 		34CE862820A08C34002EE744 /* SteamGathererUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CE862720A08C34002EE744 /* SteamGathererUITests.swift */; };
+		34CE863720A08FAB002EE744 /* RLClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CE863620A08FAB002EE744 /* RLClient.swift */; };
 		87172ADE28A6A4607CE0D664 /* Pods_SteamGathererUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3343A29159E7442341D1F7B6 /* Pods_SteamGathererUITests.framework */; };
 		E8EFD3D0B1785F917A3D73A1 /* Pods_SteamGathererTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1888F817C14E0318E241025 /* Pods_SteamGathererTests.framework */; };
 /* End PBXBuildFile section */
@@ -38,9 +52,22 @@
 /* Begin PBXFileReference section */
 		21862F992E79EBC22B2A2A67 /* Pods-SteamGathererTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SteamGathererTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SteamGathererTests/Pods-SteamGathererTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3343A29159E7442341D1F7B6 /* Pods_SteamGathererUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SteamGathererUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3415C8E320A09134009CBF30 /* Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
+		3415C8E520A09330009CBF30 /* UIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKit.swift; sourceTree = "<group>"; };
+		3415C8E820A093C6009CBF30 /* BaseViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViews.swift; sourceTree = "<group>"; };
+		3415C8EB20A0946C009CBF30 /* DINPro-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DINPro-Light.otf"; sourceTree = "<group>"; };
+		3415C8EC20A0946C009CBF30 /* DINPro-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DINPro-Medium.otf"; sourceTree = "<group>"; };
+		3415C8ED20A0946C009CBF30 /* DINPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DINPro-Regular.otf"; sourceTree = "<group>"; };
+		3415C8EE20A0946C009CBF30 /* DINPro-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DINPro-Black.otf"; sourceTree = "<group>"; };
+		3415C8EF20A0946C009CBF30 /* DINPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DINPro-Bold.otf"; sourceTree = "<group>"; };
+		3415C8FF20A096ED009CBF30 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3415C90120A09711009CBF30 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		3415C90320A09E73009CBF30 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		3415C90520A09FF6009CBF30 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		3415C90820A0A0A8009CBF30 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		34CE860420A08C32002EE744 /* SteamGatherer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SteamGatherer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34CE860720A08C32002EE744 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		34CE860920A08C32002EE744 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		34CE860920A08C32002EE744 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		34CE860E20A08C33002EE744 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		34CE861120A08C33002EE744 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		34CE861320A08C33002EE744 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -50,6 +77,7 @@
 		34CE862320A08C34002EE744 /* SteamGathererUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SteamGathererUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		34CE862720A08C34002EE744 /* SteamGathererUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SteamGathererUITests.swift; sourceTree = "<group>"; };
 		34CE862920A08C34002EE744 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		34CE863620A08FAB002EE744 /* RLClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLClient.swift; sourceTree = "<group>"; };
 		43801131ECB005629918E5C4 /* Pods-SteamGatherer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SteamGatherer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SteamGatherer/Pods-SteamGatherer.debug.xcconfig"; sourceTree = "<group>"; };
 		96FEF6FA3CF9E625D37A5845 /* Pods-SteamGathererUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SteamGathererUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SteamGathererUITests/Pods-SteamGathererUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A3E4921E950A4E65AA3483CD /* Pods-SteamGathererTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SteamGathererTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SteamGathererTests/Pods-SteamGathererTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -87,9 +115,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3415C8E220A0912B009CBF30 /* Targets */ = {
+			isa = PBXGroup;
+			children = (
+				3415C8EA20A0944C009CBF30 /* Fonts */,
+				3415C8E320A09134009CBF30 /* Shared.swift */,
+			);
+			path = Targets;
+			sourceTree = "<group>";
+		};
+		3415C8E720A093BF009CBF30 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				3415C8E820A093C6009CBF30 /* BaseViews.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		3415C8EA20A0944C009CBF30 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				3415C8EE20A0946C009CBF30 /* DINPro-Black.otf */,
+				3415C8EF20A0946C009CBF30 /* DINPro-Bold.otf */,
+				3415C8EB20A0946C009CBF30 /* DINPro-Light.otf */,
+				3415C8EC20A0946C009CBF30 /* DINPro-Medium.otf */,
+				3415C8ED20A0946C009CBF30 /* DINPro-Regular.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		3415C90720A0A09C009CBF30 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				3415C90820A0A0A8009CBF30 /* MainViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		34CE85FB20A08C32002EE744 = {
 			isa = PBXGroup;
 			children = (
+				3415C8E220A0912B009CBF30 /* Targets */,
 				34CE860620A08C32002EE744 /* SteamGatherer */,
 				34CE863520A08CF4002EE744 /* Core */,
 				34CE861B20A08C34002EE744 /* SteamGathererTests */,
@@ -113,10 +179,11 @@
 		34CE860620A08C32002EE744 /* SteamGatherer */ = {
 			isa = PBXGroup;
 			children = (
-				34CE860720A08C32002EE744 /* AppDelegate.swift */,
-				34CE860920A08C32002EE744 /* ViewController.swift */,
-				34CE860E20A08C33002EE744 /* Assets.xcassets */,
-				34CE861020A08C33002EE744 /* LaunchScreen.storyboard */,
+				3415C8E720A093BF009CBF30 /* Base */,
+				34CE863820A08FB1002EE744 /* Supporting Files */,
+				3415C90720A0A09C009CBF30 /* Main */,
+				34CE860920A08C32002EE744 /* LoginViewController.swift */,
+				3415C90320A09E73009CBF30 /* RegisterViewController.swift */,
 				34CE861320A08C33002EE744 /* Info.plist */,
 			);
 			path = SteamGatherer;
@@ -143,8 +210,23 @@
 		34CE863520A08CF4002EE744 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				34CE863620A08FAB002EE744 /* RLClient.swift */,
+				3415C8E520A09330009CBF30 /* UIKit.swift */,
+				3415C90120A09711009CBF30 /* UIColor.swift */,
+				3415C90520A09FF6009CBF30 /* SessionManager.swift */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		34CE863820A08FB1002EE744 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				34CE860720A08C32002EE744 /* AppDelegate.swift */,
+				34CE860E20A08C33002EE744 /* Assets.xcassets */,
+				3415C8FF20A096ED009CBF30 /* Images.xcassets */,
+				34CE861020A08C33002EE744 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		A5AE4ED5D35B9BA5EDEB832E /* Pods */ = {
@@ -284,6 +366,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				34CE861220A08C33002EE744 /* LaunchScreen.storyboard in Resources */,
+				3415C90020A096ED009CBF30 /* Images.xcassets in Resources */,
+				3415C8FB20A09695009CBF30 /* DINPro-Black.otf in Resources */,
+				3415C8FC20A09697009CBF30 /* DINPro-Light.otf in Resources */,
+				3415C8FA20A09690009CBF30 /* DINPro-Bold.otf in Resources */,
+				3415C8FD20A09699009CBF30 /* DINPro-Medium.otf in Resources */,
+				3415C8FE20A0969D009CBF30 /* DINPro-Regular.otf in Resources */,
 				34CE860F20A08C33002EE744 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -456,8 +544,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34CE860A20A08C32002EE744 /* ViewController.swift in Sources */,
+				3415C8E620A09330009CBF30 /* UIKit.swift in Sources */,
+				3415C90220A09711009CBF30 /* UIColor.swift in Sources */,
+				3415C90620A09FF6009CBF30 /* SessionManager.swift in Sources */,
+				3415C8E420A09134009CBF30 /* Shared.swift in Sources */,
+				3415C90420A09E73009CBF30 /* RegisterViewController.swift in Sources */,
+				34CE863720A08FAB002EE744 /* RLClient.swift in Sources */,
+				3415C8E920A093C6009CBF30 /* BaseViews.swift in Sources */,
+				34CE860A20A08C32002EE744 /* LoginViewController.swift in Sources */,
 				34CE860820A08C32002EE744 /* AppDelegate.swift in Sources */,
+				3415C90920A0A0A8009CBF30 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
