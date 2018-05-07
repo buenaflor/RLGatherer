@@ -1,52 +1,68 @@
-Pods/Endpoints/LICENSE
-Pods/Endpoints/README.md
-Pods/Endpoints/Sources/Client.swift
-Pods/Endpoints/Sources/Convenience.swift
-Pods/Endpoints/Sources/Debugging.swift
-Pods/Endpoints/Sources/Parsing.swift
-Pods/Endpoints/Sources/Request.swift
-Pods/Endpoints/Sources/Session.swift
-Pods/Endpoints/Sources/Testing.swift
-Pods/Pods.xcodeproj/project.pbxproj
-Pods/Pods.xcodeproj/xcuserdata/gino.xcuserdatad/xcschemes/Endpoints.xcscheme
-Pods/Pods.xcodeproj/xcuserdata/gino.xcuserdatad/xcschemes/Pods-SteamGatherer.xcscheme
-Pods/Pods.xcodeproj/xcuserdata/gino.xcuserdatad/xcschemes/Pods-SteamGathererTests.xcscheme
-Pods/Pods.xcodeproj/xcuserdata/gino.xcuserdatad/xcschemes/Pods-SteamGathererUITests.xcscheme
-Pods/Pods.xcodeproj/xcuserdata/gino.xcuserdatad/xcschemes/xcschememanagement.plist
-Pods/Target Support Files/Endpoints/Endpoints-dummy.m
-Pods/Target Support Files/Endpoints/Endpoints-prefix.pch
-Pods/Target Support Files/Endpoints/Endpoints-umbrella.h
-Pods/Target Support Files/Endpoints/Endpoints.modulemap
-Pods/Target Support Files/Endpoints/Endpoints.xcconfig
-Pods/Target Support Files/Endpoints/Info.plist
-Pods/Target Support Files/Pods-SteamGatherer/Info.plist
-Pods/Target Support Files/Pods-SteamGatherer/Pods-SteamGatherer-acknowledgements.markdown
-Pods/Target Support Files/Pods-SteamGatherer/Pods-SteamGatherer-acknowledgements.plist
-Pods/Target Support Files/Pods-SteamGatherer/Pods-SteamGatherer-dummy.m
-Pods/Target Support Files/Pods-SteamGatherer/Pods-SteamGatherer-frameworks.sh
-Pods/Target Support Files/Pods-SteamGatherer/Pods-SteamGatherer-resources.sh
-Pods/Target Support Files/Pods-SteamGatherer/Pods-SteamGatherer-umbrella.h
-Pods/Target Support Files/Pods-SteamGatherer/Pods-SteamGatherer.debug.xcconfig
-Pods/Target Support Files/Pods-SteamGatherer/Pods-SteamGatherer.modulemap
-Pods/Target Support Files/Pods-SteamGatherer/Pods-SteamGatherer.release.xcconfig
-Pods/Target Support Files/Pods-SteamGathererTests/Info.plist
-Pods/Target Support Files/Pods-SteamGathererTests/Pods-SteamGathererTests-acknowledgements.markdown
-Pods/Target Support Files/Pods-SteamGathererTests/Pods-SteamGathererTests-acknowledgements.plist
-Pods/Target Support Files/Pods-SteamGathererTests/Pods-SteamGathererTests-dummy.m
-Pods/Target Support Files/Pods-SteamGathererTests/Pods-SteamGathererTests-frameworks.sh
-Pods/Target Support Files/Pods-SteamGathererTests/Pods-SteamGathererTests-resources.sh
-Pods/Target Support Files/Pods-SteamGathererTests/Pods-SteamGathererTests-umbrella.h
-Pods/Target Support Files/Pods-SteamGathererTests/Pods-SteamGathererTests.debug.xcconfig
-Pods/Target Support Files/Pods-SteamGathererTests/Pods-SteamGathererTests.modulemap
-Pods/Target Support Files/Pods-SteamGathererTests/Pods-SteamGathererTests.release.xcconfig
-Pods/Target Support Files/Pods-SteamGathererUITests/Info.plist
-Pods/Target Support Files/Pods-SteamGathererUITests/Pods-SteamGathererUITests-acknowledgements.markdown
-Pods/Target Support Files/Pods-SteamGathererUITests/Pods-SteamGathererUITests-acknowledgements.plist
-Pods/Target Support Files/Pods-SteamGathererUITests/Pods-SteamGathererUITests-dummy.m
-Pods/Target Support Files/Pods-SteamGathererUITests/Pods-SteamGathererUITests-frameworks.sh
-Pods/Target Support Files/Pods-SteamGathererUITests/Pods-SteamGathererUITests-resources.sh
-Pods/Target Support Files/Pods-SteamGathererUITests/Pods-SteamGathererUITests-umbrella.h
-Pods/Target Support Files/Pods-SteamGathererUITests/Pods-SteamGathererUITests.debug.xcconfig
-Pods/Target Support Files/Pods-SteamGathererUITests/Pods-SteamGathererUITests.modulemap
-Pods/Target Support Files/Pods-SteamGathererUITests/Pods-SteamGathererUITests.release.xcconfig
-SteamGatherer.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+# Xcode
+#
+# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
+
+## Build generated
+build/
+DerivedData/
+
+## Various settings
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+
+## Other
+*.moved-aside
+*.xccheckout
+*.xcscmblueprint
+
+## Obj-C/Swift specific
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+## Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# Swift Package Manager
+#
+# Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
+# Packages/
+# Package.pins
+# Package.resolved
+.build/
+
+# CocoaPods
+#
+# We recommend against adding the Pods directory to your .gitignore. However
+# you should judge for yourself, the pros and cons are mentioned at:
+# https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
+#
+# Pods/
+
+# Carthage
+#
+# Add this line if you want to avoid checking in source code from Carthage dependencies.
+# Carthage/Checkouts
+
+Carthage/Build
+
+# fastlane
+#
+# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
+# screenshots whenever they are needed.
+# For more information about the recommended setup visit:
+# https://docs.fastlane.tools/best-practices/source-control/#source-control
+
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
