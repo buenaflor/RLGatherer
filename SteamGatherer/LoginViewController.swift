@@ -6,9 +6,8 @@
 //  Copyright © 2018 Giancarlo. All rights reserved.
 //
 
-// RL API KEY: P0VGARSRYF7IVXBIUN1CK7G3LQ6HGN4S
-
 import UIKit
+import FirebaseAuth
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
@@ -25,6 +24,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     lazy var passwordTextField: InputTextField = {
         let tf = InputTextField(placeHolder: "Password")
         tf.delegate = self
+        tf.isSecureTextEntry = true
         return tf
     }()
     
@@ -57,6 +57,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         forgotPasswordButton.addTarget(self, action: #selector(forgotPasswordButtonTapped), for: .touchUpInside)
         registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         
         view.backgroundColor = UIColor.RL.main
         
@@ -124,6 +125,43 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @objc func forgotPasswordButtonTapped() {
         
+    }
+    
+    @objc func loginButtonTapped() {
+        guard let username = userNameTextField.text, let password = passwordTextField.text else {
+            showAlert(title: "Error", message: "Something went wrong")
+            return
+        }
+
+        if username.isEmpty || password.isEmpty {
+            if username.isEmpty && password.isEmpty {
+                userNameTextField.layer.borderColor = UIColor.red.cgColor
+                passwordTextField.layer.borderColor = UIColor.red.cgColor
+                showAlert(title: "Error", message: "Enter your password and username!")
+            }
+            else {
+                if username.isEmpty {
+                    userNameTextField.layer.borderColor = UIColor.red.cgColor
+                    showAlert(title: "Error", message: "Enter your username!")
+                }
+                if password.isEmpty {
+                    passwordTextField.layer.borderColor = UIColor.red.cgColor
+                    showAlert(title: "Error", message: "Enter your password!")
+                }
+            }
+        }
+        else {
+            Auth.auth().signIn(withEmail: username, password: password) { (user, error) in
+                if let error = error {
+                    self.showAlert(title: "Error", message: error.localizedDescription)
+                }
+                else {
+                    SessionManager.shared.updateAuthentication()
+                    self.dismiss(animated: true, completion: nil)
+                    print(SessionManager.shared.isLoggedIn)
+                }
+            }
+        }
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {

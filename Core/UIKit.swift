@@ -69,6 +69,79 @@ public extension UIView {
     }
 }
 
+
+// MARK: - ReusableView Protocol & Configurable
+
+/// Protocol for making dataSourcing a cell easier
+public protocol Configurable {
+    associatedtype T
+    var model: T? { get set }
+    func configureWithModel(_: T)
+}
+
+/// Protocol for setting the defaultReuseIdentifier
+public protocol ReusableView: class {
+    static var defaultReuseIdentifier: String { get }
+}
+
+public extension ReusableView where Self: UIView {
+    
+    /// Grabs the defaultReuseIdentifier through the class name
+    static var defaultReuseIdentifier: String {
+        return NSStringFromClass(self)
+    }
+}
+
+
+// MARK: - TableView Generics
+
+extension UITableViewCell: ReusableView { }
+extension UITableView {
+    
+    /// Custom Generic function for registering a TableViewCell
+    func register<T: UITableViewCell>(_ type: T.Type) {
+        register(type.self, forCellReuseIdentifier: type.defaultReuseIdentifier)
+    }
+    
+    /// Custom Generic function for dequeueing a TableViewCell
+    func dequeueReusableCell<T: UITableViewCell>(_ type: T.Type, for indexPath: IndexPath) -> T {
+        guard let cell = dequeueReusableCell(withIdentifier: type.defaultReuseIdentifier, for: indexPath) as? T else {
+            fatalError("Could not dequeue cell: \(type.defaultReuseIdentifier)")
+        }
+        return cell
+    }
+    
+    /// Deselects row at given IndexPath
+    func deselectRow() {
+        guard let indexPath = indexPathForSelectedRow else { return }
+        self.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+
+// MARK: - CollectionView Generics
+
+extension UICollectionViewCell: ReusableView { }
+extension UICollectionView {
+    
+    /// Custom Generic function for registering a CollectionViewCell
+    func register<T: UICollectionViewCell>(_ type: T.Type) {
+        register(type.self, forCellWithReuseIdentifier: type.defaultReuseIdentifier)
+    }
+    
+    /// Custom Generic function for dequeueing a TableViewCell
+    func dequeueReusableCell<T: UICollectionViewCell>(_ type: T.Type, for indexPath: IndexPath) -> T {
+        guard let cell = dequeueReusableCell(withReuseIdentifier: type.defaultReuseIdentifier, for: indexPath) as? T else {
+            fatalError("Could not dequeue cell: \(type.defaultReuseIdentifier)")
+        }
+        
+        return cell
+    }
+}
+
+
+// MARK: - UIImageView
+
 public extension UIImageView {
     
     public func setImage(_ image: UIImage, with renderingMode: UIImageRenderingMode, tintColor: UIColor) {
@@ -77,9 +150,28 @@ public extension UIImageView {
     }
 }
 
+// MARK: - Alert
+
 public extension UIViewController {
     
+    /// Wraps the ViewController in a UINavigationController
     public func wrapped() -> UINavigationController {
         return UINavigationController(rootViewController: self)
     }
+    
+    /// Shows an alert message
+    public func showAlert(title: String, message: String = "") {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    public var topViewController: UIViewController {
+        if let overVC = presentedViewController, !overVC.isBeingDismissed {
+            return overVC.topViewController
+        }
+        return self
+    }
 }
+

@@ -7,6 +7,72 @@
 //
 
 import Foundation
+import Endpoints
+import FirebaseAuth
+
+enum ClientType {
+    
+    case rlClient
+    
+    var client: Client {
+        switch self {
+        case .rlClient:
+            return RLClient()
+        }
+    }
+}
+
+class SessionManager {
+    static let shared = SessionManager(clientType: .rlClient)
+    
+    private let defaults = UserDefaults.standard
+    
+    private let rlSession: Session<RLClient>
+    
+    private var clientType: ClientType?
+    
+    init(clientType: ClientType) {
+        self.clientType = clientType
+        rlSession = {
+            let client = RLClient()
+            let session = Session(with: client)
+            #if DEBUG
+            session.debug = true
+            #endif
+            
+            return session
+        }()
+    }
+    
+    public var isLoggedIn: Bool {
+        return defaults.isLoggedIn
+    }
+    
+    public func updateAuthentication() {
+        defaults.isLoggedIn = true
+    }
+    
+    public func signOut() {
+        do {
+            try Auth.auth().signOut()
+            defaults.isLoggedIn = false
+            print("hey")
+        } catch let err {
+            print(err)
+        }
+    }
+    
+    @discardableResult
+    public func start<C: Call>(call: C, completion: @escaping (Result<C.ResponseType.OutputType>) -> Void) -> URLSessionTask {
+        guard let clientType = clientType else { fatalError("ClientType not defined") }
+        
+        switch clientType {
+        case .rlClient:
+            let task = rlSession.start(call: call, completion: completion)
+            return task
+        }
+    }
+}
 
 private extension UserDefaults {
     struct Keys {

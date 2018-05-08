@@ -28,3 +28,18 @@ class RLClient: Client {
     }
 }
 
+extension RLClient {
+    
+    struct GetPlatforms: Call {
+        typealias ResponseType = GetPlatformsResponse
+        
+        var tag: String
+        var query: Parameters
+        
+        var request: URLRequestEncodable {
+            return Request(.get, tag, query: query)
+        }
+    }
+}
+
+

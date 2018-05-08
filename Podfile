@@ -7,6 +7,11 @@ target 'SteamGatherer' do
 
   # Pods for SteamGatherer
   pod 'Endpoints'
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'SideMenu'
+  pod 'SCPageViewController'
+  pod 'Unbox'
 
   target 'SteamGathererTests' do
     inherit! :search_paths

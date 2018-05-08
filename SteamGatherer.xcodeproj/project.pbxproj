@@ -20,7 +20,12 @@
 		3415C90220A09711009CBF30 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3415C90120A09711009CBF30 /* UIColor.swift */; };
 		3415C90420A09E73009CBF30 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3415C90320A09E73009CBF30 /* RegisterViewController.swift */; };
 		3415C90620A09FF6009CBF30 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3415C90520A09FF6009CBF30 /* SessionManager.swift */; };
-		3415C90920A0A0A8009CBF30 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3415C90820A0A0A8009CBF30 /* MainViewController.swift */; };
+		3415C90920A0A0A8009CBF30 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3415C90820A0A0A8009CBF30 /* HomeViewController.swift */; };
+		3415C90E20A0A4DB009CBF30 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3415C90D20A0A4DB009CBF30 /* GoogleService-Info.plist */; };
+		3415C91020A0AE31009CBF30 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3415C90F20A0AE31009CBF30 /* MainTabBarController.swift */; };
+		3415C91220A0B5E7009CBF30 /* RLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3415C91120A0B5E7009CBF30 /* RLResponse.swift */; };
+		3415C91420A183DA009CBF30 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3415C91320A183DA009CBF30 /* GroupViewController.swift */; };
+		3415C91620A18CC3009CBF30 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3415C91520A18CC3009CBF30 /* SideMenuViewController.swift */; };
 		34CE860820A08C32002EE744 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CE860720A08C32002EE744 /* AppDelegate.swift */; };
 		34CE860A20A08C32002EE744 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CE860920A08C32002EE744 /* LoginViewController.swift */; };
 		34CE860F20A08C33002EE744 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34CE860E20A08C33002EE744 /* Assets.xcassets */; };
@@ -64,7 +69,12 @@
 		3415C90120A09711009CBF30 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		3415C90320A09E73009CBF30 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		3415C90520A09FF6009CBF30 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
-		3415C90820A0A0A8009CBF30 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		3415C90820A0A0A8009CBF30 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		3415C90D20A0A4DB009CBF30 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3415C90F20A0AE31009CBF30 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		3415C91120A0B5E7009CBF30 /* RLResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLResponse.swift; sourceTree = "<group>"; };
+		3415C91320A183DA009CBF30 /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
+		3415C91520A18CC3009CBF30 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		34CE860420A08C32002EE744 /* SteamGatherer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SteamGatherer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34CE860720A08C32002EE744 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34CE860920A08C32002EE744 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +128,7 @@
 		3415C8E220A0912B009CBF30 /* Targets */ = {
 			isa = PBXGroup;
 			children = (
+				3415C90D20A0A4DB009CBF30 /* GoogleService-Info.plist */,
 				3415C8EA20A0944C009CBF30 /* Fonts */,
 				3415C8E320A09134009CBF30 /* Shared.swift */,
 			);
@@ -147,7 +158,10 @@
 		3415C90720A0A09C009CBF30 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				3415C90820A0A0A8009CBF30 /* MainViewController.swift */,
+				3415C90F20A0AE31009CBF30 /* MainTabBarController.swift */,
+				3415C90820A0A0A8009CBF30 /* HomeViewController.swift */,
+				3415C91320A183DA009CBF30 /* GroupViewController.swift */,
+				3415C91520A18CC3009CBF30 /* SideMenuViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -211,9 +225,10 @@
 			isa = PBXGroup;
 			children = (
 				34CE863620A08FAB002EE744 /* RLClient.swift */,
-				3415C8E520A09330009CBF30 /* UIKit.swift */,
-				3415C90120A09711009CBF30 /* UIColor.swift */,
+				3415C91120A0B5E7009CBF30 /* RLResponse.swift */,
 				3415C90520A09FF6009CBF30 /* SessionManager.swift */,
+				3415C90120A09711009CBF30 /* UIColor.swift */,
+				3415C8E520A09330009CBF30 /* UIKit.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -365,6 +380,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3415C90E20A0A4DB009CBF30 /* GoogleService-Info.plist in Resources */,
 				34CE861220A08C33002EE744 /* LaunchScreen.storyboard in Resources */,
 				3415C90020A096ED009CBF30 /* Images.xcassets in Resources */,
 				3415C8FB20A09695009CBF30 /* DINPro-Black.otf in Resources */,
@@ -510,9 +526,26 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SteamGatherer/Pods-SteamGatherer-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Endpoints/Endpoints.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/SCPageViewController/SCPageViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/SCScrollView/SCScrollView.framework",
+				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/Unbox/Unbox.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Endpoints.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCPageViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCScrollView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Unbox.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -546,14 +579,18 @@
 			files = (
 				3415C8E620A09330009CBF30 /* UIKit.swift in Sources */,
 				3415C90220A09711009CBF30 /* UIColor.swift in Sources */,
+				3415C91020A0AE31009CBF30 /* MainTabBarController.swift in Sources */,
 				3415C90620A09FF6009CBF30 /* SessionManager.swift in Sources */,
+				3415C91620A18CC3009CBF30 /* SideMenuViewController.swift in Sources */,
 				3415C8E420A09134009CBF30 /* Shared.swift in Sources */,
 				3415C90420A09E73009CBF30 /* RegisterViewController.swift in Sources */,
 				34CE863720A08FAB002EE744 /* RLClient.swift in Sources */,
 				3415C8E920A093C6009CBF30 /* BaseViews.swift in Sources */,
+				3415C91220A0B5E7009CBF30 /* RLResponse.swift in Sources */,
 				34CE860A20A08C32002EE744 /* LoginViewController.swift in Sources */,
+				3415C91420A183DA009CBF30 /* GroupViewController.swift in Sources */,
 				34CE860820A08C32002EE744 /* AppDelegate.swift in Sources */,
-				3415C90920A0A0A8009CBF30 /* MainViewController.swift in Sources */,
+				3415C90920A0A0A8009CBF30 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
