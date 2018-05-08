@@ -15,129 +15,117 @@ class HomeViewController: MainController, UITableViewDelegate, UITableViewDataSo
         let tv = UITableView()
         tv.delegate = self
         tv.dataSource = self
-        tv.register(UITableViewCell.self)
-        tv.separatorStyle = .none
+        tv.register(PlayerTableViewCell.self)
+        tv.bounces = false
         tv.backgroundColor = UIColor.RL.mainDarker
         return tv
     }()
     
-    lazy var xboxButton: UIButton = {
-        let btn = UIButton()
-        btn.addTarget(self, action: #selector(xboxButtonTapped(sender:)), for: .touchUpInside)
-        btn.setImage(#imageLiteral(resourceName: "RL_xbox_50").withRenderingMode(.alwaysTemplate), for: .normal)
-        btn.tintColor = .white
-        return btn
+    lazy var platformImageView: UIImageView = {
+        let iv = UIImageView()
+        iv.setImage(#imageLiteral(resourceName: "RL_steam_50"), with: .alwaysTemplate, tintColor: .white)
+        return iv
     }()
     
-    lazy var playstationButton: UIButton = {
-        let btn = UIButton()
-        btn.addTarget(self, action: #selector(playstationButtonTapped(sender:)), for: .touchUpInside)
-        btn.setImage(#imageLiteral(resourceName: "RL_playstation_50").withRenderingMode(.alwaysTemplate), for: .normal)
-        btn.tintColor = .white
-        return btn
+    lazy var searchTextField: InputTextField = {
+        let tf = InputTextField()
+        tf.backgroundColor = UIColor.RL.main
+        tf.attributedPlaceholder = NSAttributedString(string: "Search for a player", attributes: [NSAttributedStringKey.font : UIFont.RLRegularLarge, NSAttributedStringKey.foregroundColor: UIColor.white])
+        tf.borderStyle = .none
+        tf.tintColor = .white
+        return tf
     }()
-    
-    lazy var steamButton: UIButton = {
-        let btn = UIButton()
-        btn.addTarget(self, action: #selector(steamButtonTapped(sender:)), for: .touchUpInside)
-        btn.setImage(#imageLiteral(resourceName: "RL_steam_50").withRenderingMode(.alwaysTemplate), for: .normal)
-        btn.tintColor = .white
-        return btn
-    }()
-    
-    lazy var filterButton: UIButton = {
-        let btn = UIButton()
-        btn.setImage(#imageLiteral(resourceName: "RL_filter_100").withRenderingMode(.alwaysTemplate), for: .normal)
-        btn.tintColor = .white
-        return btn
-    }()
-    
-    let tableViewContainerView = UIView()
-    let steamContainerView = UIView()
-    let playStationContainerView = UIView()
-    let xboxContainerView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor.RL.mainDarker
-        steamContainerView.backgroundColor = UIColor.RL.selectedGreen
-        playStationContainerView.backgroundColor = UIColor.RL.mainDarkComplementary
-        xboxContainerView.backgroundColor = UIColor.RL.mainDarkComplementary
-        
-//        view.add(subview: steamContainerView) { (v, p) in [
-//            v.topAnchor.constraint(equalTo: p.safeAreaLayoutGuide.topAnchor, constant: 20),
-//            v.leadingAnchor.constraint(equalTo: p.leadingAnchor, constant: 30),
-//            v.widthAnchor.constraint(equalTo: p.widthAnchor, multiplier: 0.283),
-//            v.heightAnchor.constraint(equalToConstant: 50)
-//            ]}
-//
-//        view.add(subview: playStationContainerView) { (v, p) in [
-//            v.topAnchor.constraint(equalTo: p.safeAreaLayoutGuide.topAnchor, constant: 20),
-//            v.leadingAnchor.constraint(equalTo: steamContainerView.trailingAnchor),
-//            v.widthAnchor.constraint(equalTo: p.widthAnchor, multiplier: 0.283),
-//            v.heightAnchor.constraint(equalToConstant: 50)
-//            ]}
-//
-//        view.add(subview: xboxContainerView) { (v, p) in [
-//            v.topAnchor.constraint(equalTo: p.safeAreaLayoutGuide.topAnchor, constant: 20),
-//            v.leadingAnchor.constraint(equalTo: playStationContainerView.trailingAnchor),
-//            v.widthAnchor.constraint(equalTo: p.widthAnchor, multiplier: 0.283),
-//            v.heightAnchor.constraint(equalToConstant: 50)
-//            ]}
-        
-//        steamContainerView.add(subview: steamButton) { (v, p) in [
-//            v.centerYAnchor.constraint(equalTo: p.centerYAnchor),
-//            v.centerXAnchor.constraint(equalTo: p.centerXAnchor),
-//            v.widthAnchor.constraint(equalToConstant: 30),
-//            v.heightAnchor.constraint(equalToConstant: 30)
-//            ]}
-//
-//        playStationContainerView.add(subview: playstationButton) { (v, p) in [
-//            v.centerYAnchor.constraint(equalTo: p.centerYAnchor),
-//            v.centerXAnchor.constraint(equalTo: p.centerXAnchor),
-//            v.widthAnchor.constraint(equalToConstant: 30),
-//            v.heightAnchor.constraint(equalToConstant: 30)
-//            ]}
-//
-//        xboxContainerView.add(subview: xboxButton) { (v, p) in [
-//            v.centerYAnchor.constraint(equalTo: p.centerYAnchor),
-//            v.centerXAnchor.constraint(equalTo: p.centerXAnchor),
-//            v.widthAnchor.constraint(equalToConstant: 30),
-//            v.heightAnchor.constraint(equalToConstant: 30)
-//            ]}
     
+        view.add(subview: platformImageView) { (v, p) in [
+            v.topAnchor.constraint(equalTo: p.safeAreaLayoutGuide.topAnchor, constant: 15),
+            v.centerXAnchor.constraint(equalTo: p.centerXAnchor),
+            v.heightAnchor.constraint(equalToConstant: 35),
+            v.widthAnchor.constraint(equalToConstant: 35)
+            ]}
         
-        view.fillToSuperview(tableView)
+        view.add(subview: searchTextField) { (v, p) in [
+            v.topAnchor.constraint(equalTo: platformImageView.bottomAnchor, constant: 15),
+            v.leadingAnchor.constraint(equalTo: p.leadingAnchor, constant: 30),
+            v.trailingAnchor.constraint(equalTo: p.trailingAnchor, constant: -30),
+            v.heightAnchor.constraint(equalToConstant: 40)
+            ]}
         
-    }
-    
-    @objc func playstationButtonTapped(sender: UIButton) {
-        playStationContainerView.backgroundColor = UIColor.RL.selectedGreen
-        steamContainerView.backgroundColor = UIColor.RL.mainDarkComplementary
-        xboxContainerView.backgroundColor = UIColor.RL.mainDarkComplementary
-    }
-    
-    @objc func steamButtonTapped(sender: UIButton) {
-        steamContainerView.backgroundColor = UIColor.RL.selectedGreen
-        playStationContainerView.backgroundColor = UIColor.RL.mainDarkComplementary
-        xboxContainerView.backgroundColor = UIColor.RL.mainDarkComplementary
-    }
-    
-    @objc func xboxButtonTapped(sender: UIButton) {
-        xboxContainerView.backgroundColor = UIColor.RL.selectedGreen
-        steamContainerView.backgroundColor = UIColor.RL.mainDarkComplementary
-        playStationContainerView.backgroundColor = UIColor.RL.mainDarkComplementary
+        view.add(subview: tableView) { (v, p) in [
+            v.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 15),
+            v.leadingAnchor.constraint(equalTo: p.leadingAnchor),
+            v.trailingAnchor.constraint(equalTo: p.trailingAnchor),
+            v.bottomAnchor.constraint(equalTo: p.bottomAnchor, constant: -100)
+            ]}
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(UITableViewCell.self, for: indexPath)
-
+        let cell = tableView.dequeueReusableCell(PlayerTableViewCell.self, for: indexPath)
+        
+        cell.configureWithModel("")
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow()
+        
+        
+    }
+}
+
+
+class PlayerTableViewCell: UITableViewCell, Configurable {
+    var model: String?
+    
+    func configureWithModel(_: String) {
+        customImageView.image = #imageLiteral(resourceName: "Champ I")
+        nameLabel.text = "ginooo"
+        rankLabel.text = "Diamond II"
+    }
+    
+    let customImageView = UIImageView()
+    let nameLabel = Label(font: .RLBoldLarge, textAlignment: .left, textColor: .white, numberOfLines: 1)
+    let rankLabel = Label(font: .RLRegularLarge, textAlignment: .left, textColor: .white, numberOfLines: 1)
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        backgroundColor = UIColor.RL.mainDarker
+        
+        add(subview: customImageView) { (v, p) in [
+            v.leadingAnchor.constraint(equalTo: p.leadingAnchor, constant: 25),
+            v.centerYAnchor.constraint(equalTo: p.centerYAnchor),
+            v.widthAnchor.constraint(equalTo: p.heightAnchor, multiplier: 0.6),
+            v.heightAnchor.constraint(equalTo: p.heightAnchor, multiplier: 0.6)
+            ]}
+        
+        add(subview: nameLabel) { (v, p) in [
+            v.topAnchor.constraint(equalTo: p.topAnchor, constant: 10),
+            v.leadingAnchor.constraint(equalTo: customImageView.trailingAnchor, constant: 20),
+            ]}
+        
+        add(subview: rankLabel) { (v, p) in [
+            v.topAnchor.constraint(equalTo: nameLabel.bottomAnchor),
+            v.leadingAnchor.constraint(equalTo: customImageView.trailingAnchor, constant: 20)
+            ]}
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
@@ -155,9 +143,9 @@ class MainController: UIViewController, Loadable {
         }
     }
     
-    
-    
+    lazy var rightBarItem = UIBarButtonItem(image: #imageLiteral(resourceName: "RL_sort_50").withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(rightBarItemTapped))
     lazy var leftBarItem = UIBarButtonItem(image: #imageLiteral(resourceName: "RL_burgermenu_50").withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(leftBarItemTapped))
+    lazy var modeBarItem = UIBarButtonItem(image: #imageLiteral(resourceName: "RL_people_50").withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(modeBarItemTapped))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -167,6 +155,43 @@ class MainController: UIViewController, Loadable {
         SideMenuManager.default.menuWidth = max(round(min((UIScreen.main.bounds.width), (UIScreen.main.bounds.height)) * 0.80), 240)
         
         navigationItem.leftBarButtonItem = leftBarItem
+        navigationItem.rightBarButtonItems = [ rightBarItem, modeBarItem ]
+    }
+    
+    @objc func modeBarItemTapped() {
+        let alertController = UIAlertController(title: "Choose a platform", message: nil, preferredStyle: .actionSheet)
+        
+        alertController.addAction(UIAlertAction(title: "Steam", style: .default, handler: { (RL_) in
+            
+        }))
+        
+        alertController.addAction(UIAlertAction(title: "Playstation", style: .default, handler: { (RL_) in
+            
+        }))
+        
+        alertController.addAction(UIAlertAction(title: "Xbox", style: .default, handler: { (RL_) in
+            
+        }))
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    @objc func rightBarItemTapped() {
+        let alertController = UIAlertController(title: "Choose a platform", message: nil, preferredStyle: .actionSheet)
+        
+        alertController.addAction(UIAlertAction(title: "Steam", style: .default, handler: { (RL_) in
+            
+        }))
+        
+        alertController.addAction(UIAlertAction(title: "Playstation", style: .default, handler: { (RL_) in
+            
+        }))
+        
+        alertController.addAction(UIAlertAction(title: "Xbox", style: .default, handler: { (RL_) in
+            
+        }))
+        
+        present(alertController, animated: true, completion: nil)
     }
     
     @objc func leftBarItemTapped() {

@@ -39,7 +39,7 @@ class InputTextField: UITextField {
         return CGRect(x: bounds.origin.x + 10, y: bounds.origin.y, width: bounds.width, height: bounds.height)
     }
     
-    init(placeHolder: String) {
+    init(placeHolder: String?=nil) {
         super.init(frame: CGRect.zero)
         
         font = UIFont.RLRegularLarge

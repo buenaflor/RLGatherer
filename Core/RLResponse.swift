@@ -45,3 +45,21 @@ extension GetPlatformsResponse: ResponseParser {
     }
 }
 
+struct GetTiersResponse: Codable {
+    let tiers: [Tier]
+}
+
+struct Tier: Codable {
+    let tierId: Int
+    let tierName: String
+}
+
+extension GetTiersResponse: ResponseParser {
+    static func parse(data: Data, encoding: String.Encoding) throws -> GetTiersResponse {
+        
+        let response = try JSONDecoder().decode([Tier].self, from: data)
+        
+        return GetTiersResponse(tiers: response)
+    }
+}
+

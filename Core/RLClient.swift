@@ -40,6 +40,17 @@ extension RLClient {
             return Request(.get, tag, query: query)
         }
     }
+    
+    struct GetTiers: Call {
+        typealias ResponseType = GetTiersResponse
+        
+        var tag: String
+        var query: Parameters
+        
+        var request: URLRequestEncodable {
+            return Request(.get, tag, query: query)
+        }
+    }
 }
 
 

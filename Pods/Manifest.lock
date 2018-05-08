@@ -35,6 +35,11 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
+  - Realm (3.5.0):
+    - Realm/Headers (= 3.5.0)
+  - Realm/Headers (3.5.0)
+  - RealmSwift (3.5.0):
+    - Realm (= 3.5.0)
   - SCPageViewController (2.0.13):
     - SCScrollView (~> 1.1)
   - SCScrollView (1.1.8)
@@ -45,6 +50,7 @@ DEPENDENCIES:
   - Endpoints
   - Firebase/Auth
   - Firebase/Core
+  - RealmSwift
   - SCPageViewController
   - SideMenu
   - Unbox
@@ -59,11 +65,13 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   GTMSessionFetcher: 5fa5b80fd20e439ef5f545fb2cb3ca6c6714caa2
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  Realm: 0378021c424e4e2bd6a0e63b27881e929d9b9ad1
+  RealmSwift: 3322562622fda2ad596985ead4d8d8be30cf838c
   SCPageViewController: 6470029718238e7138c46490dbd326fa074dbd13
   SCScrollView: 247186f377f0b3b8eb4c0a96a2c742b322414f9f
   SideMenu: 47dbf9e4d878062d8994aed43f6e4bf6c1fea30b
   Unbox: 9ed33b2a31f7a8a049f54b94d40c4a52a28c4d9d
 
-PODFILE CHECKSUM: d026b4a2d017c01b73d2ab927681756061368b16
+PODFILE CHECKSUM: 3064bc283bc5e37fdf060148e55a648c358a2f8c
 
 COCOAPODS: 1.4.0.beta.2
