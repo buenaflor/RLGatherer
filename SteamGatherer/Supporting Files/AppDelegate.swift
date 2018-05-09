@@ -33,6 +33,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBarAppearance.isTranslucent = false
         navigationBarAppearance.tintColor = .white
         
+        SessionManager.shared.signOut()
+        
+        SessionManager.shared.start(call: RLClient.GetPlayer(tag: "player", query: ["unique_id": "76561198089225861", "apikey": BaseConfig.shared.apiKey])) { (result) in
+            result.onSuccess { value in
+                print(value)
+                }.onError { err in
+                    print(err)
+            }
+        }
+        
         return true
     }
     
@@ -53,8 +63,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         SessionManager.shared.start(call: RLClient.GetTiers(tag: "data/tiers", query: ["apikey": BaseConfig.shared.apiKey])) { (result) in
             result.onSuccess { value in
+                SessionManager.shared.tiers = value.tiers
                 self.mainTabBarController.mainVC.loadData()
-                
                 }.onError { err in
                     print(err)
             }

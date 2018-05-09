@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SideMenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = UIColor.RL.main
+        navigationController?.navigationBar.barTintColor = UIColor.RL.main
     }
 }

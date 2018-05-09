@@ -9,14 +9,14 @@
 import UIKit
 import FirebaseAuth
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
-    
+class BaseFormViewController: UIViewController, UITextFieldDelegate {
     let topContainerView = UIView()
     let iconImageView = UIImageView()
-    let informationLabel = Label(font: .RLRegularMedium, textAlignment: .center, textColor: .white, numberOfLines: 1)
-
-    lazy var userNameTextField: InputTextField = {
-        let tf = InputTextField(placeHolder: "Username")
+    let informationLabel = Label(font: .RLRegularMedium, textAlignment: .center, textColor: .white, numberOfLines: 0)
+    let titleLabel = Label(font: .RLBoldLarge, textAlignment: .center, textColor: .white, numberOfLines: 1)
+    
+    lazy var emailTextField: InputTextField = {
+        let tf = InputTextField(placeHolder: "Email")
         tf.delegate = self
         return tf
     }()
@@ -29,7 +29,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }()
     
     lazy var loginButton: RLButton = {
-        let btn = RLButton(title: "Login", titleColor: .white, backgroundColor: UIColor.RL.mainDarker, font: .RLRegularLarge)
+        let btn = RLButton(title: "Login", titleColor: .white, backgroundColor: UIColor.RL.mainDarkComplementary, font: .RLRegularLarge)
         return btn
     }()
     
@@ -49,120 +49,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return sv
     }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        let dismissTap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboardOnTap))
-        view.addGestureRecognizer(dismissTap)
-        
-        forgotPasswordButton.addTarget(self, action: #selector(forgotPasswordButtonTapped), for: .touchUpInside)
-        registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
-        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
-        
-        view.backgroundColor = UIColor.RL.main
-        
-        iconImageView.setImage(#imageLiteral(resourceName: "RL_rocket_100"), with: .alwaysTemplate, tintColor: .white)
-        
-        informationLabel.text = "Login to see and match with other players"
-        
-        view.add(subview: topContainerView) { (v, p) in [
-            v.topAnchor.constraint(equalTo: p.safeAreaLayoutGuide.topAnchor),
-            v.leadingAnchor.constraint(equalTo: p.leadingAnchor),
-            v.trailingAnchor.constraint(equalTo: p.trailingAnchor),
-            v.heightAnchor.constraint(equalTo: p.heightAnchor, multiplier: 0.4)
-            ]}
-        
-        topContainerView.add(subview: iconImageView) { (v, p) in [
-            v.centerYAnchor.constraint(equalTo: p.centerYAnchor),
-            v.centerXAnchor.constraint(equalTo: p.centerXAnchor),
-            v.heightAnchor.constraint(equalTo: p.widthAnchor, multiplier: 0.25),
-            v.widthAnchor.constraint(equalTo: p.widthAnchor, multiplier: 0.25)
-            ]}
-        
-        topContainerView.add(subview: informationLabel) { (v, p) in [
-            v.bottomAnchor.constraint(equalTo: p.bottomAnchor),
-            v.centerXAnchor.constraint(equalTo: p.centerXAnchor)
-            ]}
-        
-        view.add(subview: userNameTextField) { (v, p) in [
-            v.topAnchor.constraint(equalTo: topContainerView.bottomAnchor, constant: 25),
-            v.leadingAnchor.constraint(equalTo: p.leadingAnchor, constant: 35),
-            v.trailingAnchor.constraint(equalTo: p.trailingAnchor, constant: -35),
-            v.heightAnchor.constraint(equalToConstant: 55)
-            ]}
-        
-        view.add(subview: passwordTextField) { (v, p) in [
-            v.topAnchor.constraint(equalTo: userNameTextField.bottomAnchor, constant: 24),
-            v.leadingAnchor.constraint(equalTo: p.leadingAnchor, constant: 35),
-            v.trailingAnchor.constraint(equalTo: p.trailingAnchor, constant: -35),
-            v.heightAnchor.constraint(equalToConstant: 55)
-            ]}
-        
-        view.add(subview: loginButton) { (v, p) in [
-            v.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 24),
-            v.leadingAnchor.constraint(equalTo: p.leadingAnchor, constant: 35),
-            v.trailingAnchor.constraint(equalTo: p.trailingAnchor, constant: -35),
-            v.heightAnchor.constraint(equalToConstant: 55)
-            ]}
-        
-        view.add(subview: bottomStackView) { (v, p) in [
-            v.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 17),
-            v.leadingAnchor.constraint(equalTo: p.leadingAnchor, constant: 35),
-            v.trailingAnchor.constraint(equalTo: p.trailingAnchor, constant: -35),
-            v.heightAnchor.constraint(equalToConstant: 20)
-            ]}
-    }
-
-    @objc func dismissKeyboardOnTap() {
-        userNameTextField.resignFirstResponder()
-        passwordTextField.resignFirstResponder()
-    }
-    
-    @objc func registerButtonTapped() {
-        let registerVC = RegisterViewController()
-        present(registerVC, animated: true, completion: nil)
-    }
-    
-    @objc func forgotPasswordButtonTapped() {
-        
-    }
-    
-    @objc func loginButtonTapped() {
-        guard let username = userNameTextField.text, let password = passwordTextField.text else {
-            showAlert(title: "Error", message: "Something went wrong")
-            return
-        }
-
-        if username.isEmpty || password.isEmpty {
-            if username.isEmpty && password.isEmpty {
-                userNameTextField.layer.borderColor = UIColor.red.cgColor
-                passwordTextField.layer.borderColor = UIColor.red.cgColor
-                showAlert(title: "Error", message: "Enter your password and username!")
-            }
-            else {
-                if username.isEmpty {
-                    userNameTextField.layer.borderColor = UIColor.red.cgColor
-                    showAlert(title: "Error", message: "Enter your username!")
-                }
-                if password.isEmpty {
-                    passwordTextField.layer.borderColor = UIColor.red.cgColor
-                    showAlert(title: "Error", message: "Enter your password!")
-                }
-            }
-        }
-        else {
-            Auth.auth().signIn(withEmail: username, password: password) { (user, error) in
-                if let error = error {
-                    self.showAlert(title: "Error", message: error.localizedDescription)
-                }
-                else {
-                    SessionManager.shared.updateAuthentication()
-                    self.dismiss(animated: true, completion: nil)
-                    print(SessionManager.shared.isLoggedIn)
-                }
-            }
-        }
-    }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         // Customize Color
@@ -191,5 +77,130 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+}
+
+class LoginViewController: BaseFormViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let dismissTap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboardOnTap))
+        view.addGestureRecognizer(dismissTap)
+        
+        forgotPasswordButton.addTarget(self, action: #selector(forgotPasswordButtonTapped), for: .touchUpInside)
+        registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        
+        view.backgroundColor = UIColor.RL.mainDarker
+        
+        iconImageView.setImage(#imageLiteral(resourceName: "RL_rocket_100"), with: .alwaysTemplate, tintColor: .white)
+        
+        informationLabel.text = "Login to see and match with other players"
+        titleLabel.text = "RLGatherer"
+        
+        view.add(subview: topContainerView) { (v, p) in [
+            v.topAnchor.constraint(equalTo: p.safeAreaLayoutGuide.topAnchor),
+            v.leadingAnchor.constraint(equalTo: p.leadingAnchor),
+            v.trailingAnchor.constraint(equalTo: p.trailingAnchor),
+            v.heightAnchor.constraint(equalTo: p.heightAnchor, multiplier: 0.4)
+            ]}
+        
+        topContainerView.add(subview: iconImageView) { (v, p) in [
+            v.centerYAnchor.constraint(equalTo: p.centerYAnchor, constant: -25),
+            v.centerXAnchor.constraint(equalTo: p.centerXAnchor),
+            v.heightAnchor.constraint(equalTo: p.widthAnchor, multiplier: 0.25),
+            v.widthAnchor.constraint(equalTo: p.widthAnchor, multiplier: 0.25)
+            ]}
+        
+        topContainerView.add(subview: titleLabel) { (v, p) in [
+            v.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: 15),
+            v.centerXAnchor.constraint(equalTo: p.centerXAnchor)
+            ]}
+        
+        topContainerView.add(subview: informationLabel) { (v, p) in [
+            v.bottomAnchor.constraint(equalTo: p.bottomAnchor),
+            v.centerXAnchor.constraint(equalTo: p.centerXAnchor)
+            ]}
+        
+        view.add(subview: emailTextField) { (v, p) in [
+            v.topAnchor.constraint(equalTo: topContainerView.bottomAnchor, constant: 25),
+            v.leadingAnchor.constraint(equalTo: p.leadingAnchor, constant: 35),
+            v.trailingAnchor.constraint(equalTo: p.trailingAnchor, constant: -35),
+            v.heightAnchor.constraint(equalToConstant: 55)
+            ]}
+        
+        view.add(subview: passwordTextField) { (v, p) in [
+            v.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 24),
+            v.leadingAnchor.constraint(equalTo: p.leadingAnchor, constant: 35),
+            v.trailingAnchor.constraint(equalTo: p.trailingAnchor, constant: -35),
+            v.heightAnchor.constraint(equalToConstant: 55)
+            ]}
+        
+        view.add(subview: loginButton) { (v, p) in [
+            v.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 24),
+            v.leadingAnchor.constraint(equalTo: p.leadingAnchor, constant: 35),
+            v.trailingAnchor.constraint(equalTo: p.trailingAnchor, constant: -35),
+            v.heightAnchor.constraint(equalToConstant: 55)
+            ]}
+        
+        view.add(subview: bottomStackView) { (v, p) in [
+            v.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 17),
+            v.leadingAnchor.constraint(equalTo: p.leadingAnchor, constant: 35),
+            v.trailingAnchor.constraint(equalTo: p.trailingAnchor, constant: -35),
+            v.heightAnchor.constraint(equalToConstant: 20)
+            ]}
+        
+    }
+
+    @objc func dismissKeyboardOnTap() {
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+    }
+    
+    @objc func registerButtonTapped() {
+        let registerVC = RegisterViewController()
+        present(registerVC.wrapped(), animated: true, completion: nil)
+    }
+    
+    @objc func forgotPasswordButtonTapped() {
+        
+    }
+    
+    @objc func loginButtonTapped() {
+        guard let username = emailTextField.text, let password = passwordTextField.text else {
+            showAlert(title: "Error", message: "Something went wrong")
+            return
+        }
+
+        if username.isEmpty || password.isEmpty {
+            if username.isEmpty && password.isEmpty {
+                emailTextField.layer.borderColor = UIColor.red.cgColor
+                passwordTextField.layer.borderColor = UIColor.red.cgColor
+                showAlert(title: "Error", message: "Enter your password and username!")
+            }
+            else {
+                if username.isEmpty {
+                    emailTextField.layer.borderColor = UIColor.red.cgColor
+                    showAlert(title: "Error", message: "Enter your username!")
+                }
+                if password.isEmpty {
+                    passwordTextField.layer.borderColor = UIColor.red.cgColor
+                    showAlert(title: "Error", message: "Enter your password!")
+                }
+            }
+        }
+        else {
+            Auth.auth().signIn(withEmail: username, password: password) { (user, error) in
+                if let error = error {
+                    self.showAlert(title: "Error", message: error.localizedDescription)
+                }
+                else {
+                    SessionManager.shared.updateAuthentication()
+                    self.dismiss(animated: true, completion: nil)
+                    print(SessionManager.shared.isLoggedIn)
+                }
+            }
+        }
+    }
 }
 

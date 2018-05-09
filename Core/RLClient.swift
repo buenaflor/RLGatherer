@@ -51,6 +51,28 @@ extension RLClient {
             return Request(.get, tag, query: query)
         }
     }
+    
+    struct GetPlaylists: Call {
+        typealias ResponseType = GetPlaylistsResponse
+        
+        var tag: String
+        var query: Parameters
+        
+        var request: URLRequestEncodable {
+            return Request(.get, tag, query: query)
+        }
+    }
+    
+    struct GetPlayer: Call {
+        typealias ResponseType = GetPlayerResponse
+        
+        var tag: String
+        var query: Parameters
+        
+        var request: URLRequestEncodable {
+            return Request(.get, tag, query: query)
+        }
+    }
 }
 
 

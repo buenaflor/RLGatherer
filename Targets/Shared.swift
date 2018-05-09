@@ -15,9 +15,9 @@ class BaseConfig {
         return URL(string: "https://api.rocketleaguestats.com/v1/")!
     }
     
+//    68864HT4SZ7AVCSM7337 steam id finder
     let apiKey = "P0VGARSRYF7IVXBIUN1CK7G3LQ6HGN4S"
 }
-
 
 protocol Loadable {
     func loadData()

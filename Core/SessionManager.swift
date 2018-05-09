@@ -31,6 +31,8 @@ class SessionManager {
     
     private var clientType: ClientType?
     
+    public var tiers = [Tier]()
+    
     init(clientType: ClientType) {
         self.clientType = clientType
         rlSession = {
@@ -56,7 +58,7 @@ class SessionManager {
         do {
             try Auth.auth().signOut()
             defaults.isLoggedIn = false
-            print("hey")
+            print("Signed out")
         } catch let err {
             print(err)
         }

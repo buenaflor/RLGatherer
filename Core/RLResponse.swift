@@ -27,6 +27,9 @@ extension UnboxableParser {
 //    }
 //}
 
+
+// MARK: - Get Platforms
+
 struct GetPlatformsResponse: Codable {
     let platforms: [Platform]
 }
@@ -44,6 +47,9 @@ extension GetPlatformsResponse: ResponseParser {
         return GetPlatformsResponse(platforms: response)
     }
 }
+
+
+// MARK: - Get Tiers
 
 struct GetTiersResponse: Codable {
     let tiers: [Tier]
@@ -63,3 +69,119 @@ extension GetTiersResponse: ResponseParser {
     }
 }
 
+
+// MARK: - Get Playlists
+
+struct GetPlaylistsResponse: Codable {
+    let playlists: [Playlist]
+}
+
+struct Playlist: Codable {
+    let id, platformId: Int
+    let name: String
+    let population: Population
+}
+
+struct Population: Codable {
+    let players, updatedAt: Int
+}
+
+extension GetPlaylistsResponse: ResponseParser {
+    static func parse(data: Data, encoding: String.Encoding) throws -> GetPlaylistsResponse {
+        
+        let response = try JSONDecoder().decode([Playlist].self, from: data)
+        
+        return GetPlaylistsResponse(playlists: response)
+    }
+}
+
+extension Playlist {
+    var platformName: String {
+        switch platformId {
+        case 1:
+            return "Steam"
+        case 2:
+            return "PS4"
+        case 3:
+            return "XboxOne"
+        default:
+            return "Error"
+        }
+    }
+    
+    var modeName: String {
+        switch name {
+        case "Duel":
+            return "1v1 Duel"
+        case "Doubles":
+            return "2v2 Doubles"
+        case "Standard":
+            return "3v3 Standard"
+        case "Chaos":
+            return "4v4 Chaos"
+        case "Ranked Duel":
+            return "1v1 Ranked Duel"
+        case "Ranked Doubles":
+            return "2v2 Ranked Doubles"
+        case "Ranked Standard":
+            return "3v3 Ranked Standard"
+        case "Mutator Mashup":
+            return "Mutator Mashup"
+        case "Snow Day":
+            return "Snow Day"
+        case "Rocket Labs":
+            return "Rocket Labs"
+        case "Hoops":
+            return "Hoops"
+        case "Rumble":
+            return "Rumble"
+        case "Dropshot":
+            return "Dropshot"
+        default:
+            return "Mode not found"
+        }
+    }
+}
+
+
+// MARK: - Get Player
+
+struct GetPlayerResponse: Codable {
+    let player: PlayerData
+}
+
+struct PlayerData: Codable {
+    let uniqueID, displayName: String
+    let platform: Platform
+    let avatar, profileURL, signatureURL: String
+    let stats: Stats
+    let rankedSeasons: [String: [String: RankedSeason]]
+    let lastRequested, createdAt, updatedAt, nextUpdateAt: Int
+    
+    enum codingKeys: String, CodingKey {
+        case uniqueID = "uniqueId"
+        case displayName, platform, avatar
+        case profileURL = "profileUrl"
+        case signatureURL = "signatureUrl"
+        case stats, rankedSeasons, lastRequested, createdAt, updatedAt, nextUpdateAt
+    }
+}
+
+struct RankedSeason: Codable {
+    let rankPoints: Int
+    let matchesPlayed, tier, division: Int?
+}
+
+struct Stats: Codable {
+    let wins, goals, mvps, saves: Int
+    let shots, assists: Int
+}
+
+extension GetPlayerResponse: ResponseParser {
+    static func parse(data: Data, encoding: String.Encoding) throws -> GetPlayerResponse {
+        
+        let response = try JSONDecoder().decode(PlayerData.self, from: data)
+        
+        return GetPlayerResponse(player: response)
+    }
+}

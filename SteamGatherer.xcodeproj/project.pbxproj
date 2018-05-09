@@ -26,6 +26,12 @@
 		3415C91220A0B5E7009CBF30 /* RLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3415C91120A0B5E7009CBF30 /* RLResponse.swift */; };
 		3415C91420A183DA009CBF30 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3415C91320A183DA009CBF30 /* GroupViewController.swift */; };
 		3415C91620A18CC3009CBF30 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3415C91520A18CC3009CBF30 /* SideMenuViewController.swift */; };
+		34C39F3E20A2D8D5007F771A /* ModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C39F3D20A2D8D5007F771A /* ModeViewController.swift */; };
+		34C39F4020A2F5C6007F771A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C39F3F20A2F5C6007F771A /* Model.swift */; };
+		34C39F4320A30033007F771A /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C39F4220A30033007F771A /* PlayerViewController.swift */; };
+		34C39F4520A300C6007F771A /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C39F4420A300C6007F771A /* FirebaseManager.swift */; };
+		34C39F4720A312BB007F771A /* RegisterInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C39F4620A312BB007F771A /* RegisterInfoViewController.swift */; };
+		34C39F4920A31795007F771A /* TiersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C39F4820A31795007F771A /* TiersViewController.swift */; };
 		34CE860820A08C32002EE744 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CE860720A08C32002EE744 /* AppDelegate.swift */; };
 		34CE860A20A08C32002EE744 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CE860920A08C32002EE744 /* LoginViewController.swift */; };
 		34CE860F20A08C33002EE744 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34CE860E20A08C33002EE744 /* Assets.xcassets */; };
@@ -75,6 +81,12 @@
 		3415C91120A0B5E7009CBF30 /* RLResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLResponse.swift; sourceTree = "<group>"; };
 		3415C91320A183DA009CBF30 /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		3415C91520A18CC3009CBF30 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
+		34C39F3D20A2D8D5007F771A /* ModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeViewController.swift; sourceTree = "<group>"; };
+		34C39F3F20A2F5C6007F771A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		34C39F4220A30033007F771A /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		34C39F4420A300C6007F771A /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		34C39F4620A312BB007F771A /* RegisterInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInfoViewController.swift; sourceTree = "<group>"; };
+		34C39F4820A31795007F771A /* TiersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiersViewController.swift; sourceTree = "<group>"; };
 		34CE860420A08C32002EE744 /* SteamGatherer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SteamGatherer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34CE860720A08C32002EE744 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34CE860920A08C32002EE744 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -162,8 +174,17 @@
 				3415C90820A0A0A8009CBF30 /* HomeViewController.swift */,
 				3415C91320A183DA009CBF30 /* GroupViewController.swift */,
 				3415C91520A18CC3009CBF30 /* SideMenuViewController.swift */,
+				34C39F3D20A2D8D5007F771A /* ModeViewController.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		34C39F4120A30028007F771A /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				34C39F4220A30033007F771A /* PlayerViewController.swift */,
+			);
+			path = Player;
 			sourceTree = "<group>";
 		};
 		34CE85FB20A08C32002EE744 = {
@@ -195,9 +216,12 @@
 			children = (
 				3415C8E720A093BF009CBF30 /* Base */,
 				34CE863820A08FB1002EE744 /* Supporting Files */,
+				34C39F4120A30028007F771A /* Player */,
 				3415C90720A0A09C009CBF30 /* Main */,
 				34CE860920A08C32002EE744 /* LoginViewController.swift */,
 				3415C90320A09E73009CBF30 /* RegisterViewController.swift */,
+				34C39F4620A312BB007F771A /* RegisterInfoViewController.swift */,
+				34C39F4820A31795007F771A /* TiersViewController.swift */,
 				34CE861320A08C33002EE744 /* Info.plist */,
 			);
 			path = SteamGatherer;
@@ -229,6 +253,8 @@
 				3415C90520A09FF6009CBF30 /* SessionManager.swift */,
 				3415C90120A09711009CBF30 /* UIColor.swift */,
 				3415C8E520A09330009CBF30 /* UIKit.swift */,
+				34C39F3F20A2F5C6007F771A /* Model.swift */,
+				34C39F4420A300C6007F771A /* FirebaseManager.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -584,17 +610,23 @@
 				3415C8E620A09330009CBF30 /* UIKit.swift in Sources */,
 				3415C90220A09711009CBF30 /* UIColor.swift in Sources */,
 				3415C91020A0AE31009CBF30 /* MainTabBarController.swift in Sources */,
+				34C39F4720A312BB007F771A /* RegisterInfoViewController.swift in Sources */,
 				3415C90620A09FF6009CBF30 /* SessionManager.swift in Sources */,
+				34C39F3E20A2D8D5007F771A /* ModeViewController.swift in Sources */,
 				3415C91620A18CC3009CBF30 /* SideMenuViewController.swift in Sources */,
 				3415C8E420A09134009CBF30 /* Shared.swift in Sources */,
+				34C39F4020A2F5C6007F771A /* Model.swift in Sources */,
 				3415C90420A09E73009CBF30 /* RegisterViewController.swift in Sources */,
 				34CE863720A08FAB002EE744 /* RLClient.swift in Sources */,
 				3415C8E920A093C6009CBF30 /* BaseViews.swift in Sources */,
 				3415C91220A0B5E7009CBF30 /* RLResponse.swift in Sources */,
+				34C39F4520A300C6007F771A /* FirebaseManager.swift in Sources */,
+				34C39F4920A31795007F771A /* TiersViewController.swift in Sources */,
 				34CE860A20A08C32002EE744 /* LoginViewController.swift in Sources */,
 				3415C91420A183DA009CBF30 /* GroupViewController.swift in Sources */,
 				34CE860820A08C32002EE744 /* AppDelegate.swift in Sources */,
 				3415C90920A0A0A8009CBF30 /* HomeViewController.swift in Sources */,
+				34C39F4320A30033007F771A /* PlayerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
