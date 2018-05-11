@@ -195,6 +195,9 @@ class LoginViewController: BaseFormViewController {
                     self.showAlert(title: "Error", message: error.localizedDescription)
                 }
                 else {
+                    
+                    // ToDo: Check if information has been filled out (fetch data from firebase), if not, set newUser to true
+                    
                     SessionManager.shared.updateAuthentication()
                     self.dismiss(animated: true, completion: nil)
                     print(SessionManager.shared.isLoggedIn)

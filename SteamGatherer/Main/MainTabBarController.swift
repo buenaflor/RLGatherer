@@ -57,6 +57,41 @@ class TabBarPageViewController: UIPageViewController, UIPageViewControllerDataSo
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // Set newUser to false if successfully filled out information
+        if SessionManager.shared.newUser {
+            
+            // Block UI as long as user didnt update information
+            let coverView = UIView()
+            coverView.backgroundColor = UIColor(white: 0, alpha: 0.7)
+            coverView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(coverViewTapped)))
+            
+            let informationLabel = Label(font: .RLRegularLarge, textAlignment: .center, textColor: .white, numberOfLines: 0)
+            informationLabel.text = "Tap anywhere to add the rest of your data and start matching right away!"
+            
+            view.fillToSuperview(coverView)
+            view.bringSubview(toFront: coverView)
+            
+            showAlert(title: "Success", message: "Before you can start matching, fill in the rest of your profile information.\nHappy Gathering!") {
+                
+                coverView.add(subview: informationLabel) { (v, p) in [
+                    v.leadingAnchor.constraint(equalTo: p.leadingAnchor, constant: 30),
+                    v.trailingAnchor.constraint(equalTo: p.trailingAnchor, constant: -30),
+                    v.centerYAnchor.constraint(equalTo: p.centerYAnchor)
+                    ]}
+            }
+        }
+    }
+    
+    @objc func coverViewTapped() {
+        
+        // Present User profile
+        let playerVC = PlayerViewController()
+        playerVC.loadData()
+        self.mainVC.present(playerVC, animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

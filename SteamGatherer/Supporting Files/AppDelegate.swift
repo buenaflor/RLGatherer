@@ -27,13 +27,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         showLoginIfNeeded(animated: true)
         
-        let navigationBarAppearance =       UINavigationBar.appearance()
+        SessionManager.shared.setNewUser(false)
+        SessionManager.shared.signOut()
+        
+        let navigationBarAppearance = UINavigationBar.appearance()
         
         navigationBarAppearance.barTintColor = UIColor.RL.mainDarkComplementary
         navigationBarAppearance.isTranslucent = false
         navigationBarAppearance.tintColor = .white
-        
-        SessionManager.shared.signOut()
         
         return true
     }

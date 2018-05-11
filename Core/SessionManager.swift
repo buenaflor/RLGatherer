@@ -50,8 +50,16 @@ class SessionManager {
         return defaults.isLoggedIn
     }
     
+    public var newUser: Bool {
+        return defaults.newUser
+    }
+    
     public func updateAuthentication() {
         defaults.isLoggedIn = true
+    }
+    
+    public func setNewUser(_ value: Bool) {
+        defaults.newUser = value
     }
     
     public func signOut() {
@@ -79,6 +87,7 @@ class SessionManager {
 private extension UserDefaults {
     struct Keys {
         static let LoggedIn = "LoggedIn"
+        static let NewUser = "NewUser"
     }
     
     var isLoggedIn: Bool {
@@ -86,6 +95,14 @@ private extension UserDefaults {
             return bool(forKey: Keys.LoggedIn)
         } set {
             set(newValue, forKey: Keys.LoggedIn)
+        }
+    }
+    
+    var newUser: Bool {
+        get {
+            return bool(forKey: Keys.NewUser)
+        } set {
+            set(newValue, forKey: Keys.NewUser)
         }
     }
 }

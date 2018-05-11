@@ -68,13 +68,6 @@ class HomeViewController: MainController, UITableViewDelegate, UITableViewDataSo
         
         navigationItem.searchController = searchController
         
-//        view.add(subview: searchTextField) { (v, p) in [
-//            v.topAnchor.constraint(equalTo: p.safeAreaLayoutGuide.topAnchor, constant: 15),
-//            v.leadingAnchor.constraint(equalTo: p.leadingAnchor, constant: 30),
-//            v.trailingAnchor.constraint(equalTo: p.trailingAnchor, constant: -30),
-//            v.heightAnchor.constraint(equalToConstant: 40)
-//            ]}
-        
         view.add(subview: barContainerView) { (v, p) in [
             v.topAnchor.constraint(equalTo: p.safeAreaLayoutGuide.topAnchor),
             v.leadingAnchor.constraint(equalTo: p.leadingAnchor),
@@ -116,7 +109,6 @@ class HomeViewController: MainController, UITableViewDelegate, UITableViewDataSo
             v.trailingAnchor.constraint(equalTo: p.trailingAnchor),
             v.bottomAnchor.constraint(equalTo: p.bottomAnchor, constant: -100)
             ]}
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

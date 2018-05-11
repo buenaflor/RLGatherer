@@ -179,7 +179,17 @@ class RegisterInfoViewController: UIViewController, UITextFieldDelegate, TiersVi
                     self.showAlert(title: "Error", message: err.localizedDescription)
                 }
                 else {
-                    
+                    guard let uid = user?.uid, let nameText = self.nameTextField.text, let platformText = self.platformTextField.text, let platformIDText = self.platformIDTextField.text else { return }
+                    let player = Player(id: uid, name: nameText, rank: "", platformID: platformIDText, platform: platformText, mode: "", gatherAction: "")
+                    FirebaseManager.shared.addNewUser(uid, player: player, completion: { (err) in
+                        if let err = err {
+                            self.showAlert(title: "Error", message: err.localizedDescription)
+                        }
+                        else {
+                            SessionManager.shared.setNewUser(true)
+                            self.dismiss(animated: true, completion: nil)
+                        }
+                    })
                 }
             }
         }
@@ -270,7 +280,7 @@ class RegisterInfoViewController: UIViewController, UITextFieldDelegate, TiersVi
                             topContainerView.addSeparatorLine(color: UIColor.RL.mainDarkHighlight)
                         
                             self.view.add(subview: topContainerView, createConstraints: { (v, p) in [
-                                v.topAnchor.constraint(equalTo: self.platformIDTextField.bottomAnchor, constant: 25),
+                                v.topAnchor.constraint(equalTo: self.platformIDTextField.bottomAnchor, constant: 15),
                                 v.leadingAnchor.constraint(equalTo: p.leadingAnchor),
                                 v.trailingAnchor.constraint(equalTo: p.trailingAnchor),
                                 v.heightAnchor.constraint(equalTo: p.heightAnchor, multiplier: 0.15)
@@ -297,12 +307,12 @@ class RegisterInfoViewController: UIViewController, UITextFieldDelegate, TiersVi
                             self.avatarImageView.layer.cornerRadius = 40
                             
                             self.view.add(subview: self.oneVoneLabel, createConstraints: { (v, p) in [
-                                v.topAnchor.constraint(equalTo: topContainerView.bottomAnchor, constant: 12),
+                                v.topAnchor.constraint(equalTo: topContainerView.bottomAnchor, constant: 2),
                                 v.centerXAnchor.constraint(equalTo: p.centerXAnchor, constant: -85)
                                 ]})
                             
                             self.view.add(subview: self.twoVtwoLabel, createConstraints: { (v, p) in [
-                                v.topAnchor.constraint(equalTo: topContainerView.bottomAnchor, constant: 12),
+                                v.topAnchor.constraint(equalTo: topContainerView.bottomAnchor, constant: 2),
                                 v.centerXAnchor.constraint(equalTo: p.centerXAnchor, constant: 85)
                                 ]})
                             

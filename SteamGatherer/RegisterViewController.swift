@@ -89,7 +89,7 @@ class RegisterViewController: BaseFormViewController {
     @objc func loginButtonTapped() {
         
         guard let username = emailTextField.text, let password = passwordTextField.text else {
-            showAlert(title: "Error", message: "Something went wrong")
+            showAlert(title: "Error", message: "Something went wrong", completion: nil)
             return
         }
         
@@ -97,16 +97,16 @@ class RegisterViewController: BaseFormViewController {
             if username.isEmpty && password.isEmpty {
                 emailTextField.layer.borderColor = UIColor.red.cgColor
                 passwordTextField.layer.borderColor = UIColor.red.cgColor
-                showAlert(title: "Error", message: "Enter your password and username!")
+                showAlert(title: "Error", message: "Enter your password and username!", completion: nil)
             }
             else {
                 if username.isEmpty {
                     emailTextField.layer.borderColor = UIColor.red.cgColor
-                    showAlert(title: "Error", message: "Enter your username!")
+                    showAlert(title: "Error", message: "Enter your username!", completion: nil)
                 }
                 if password.isEmpty {
                     passwordTextField.layer.borderColor = UIColor.red.cgColor
-                    showAlert(title: "Error", message: "Enter your password!")
+                    showAlert(title: "Error", message: "Enter your password!", completion: nil)
                 }
             }
         }
