@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import SDWebImage
 import SideMenu
 
 class HomeViewController: MainController, UITableViewDelegate, UITableViewDataSource {
@@ -94,14 +96,6 @@ class HomeViewController: MainController, UITableViewDelegate, UITableViewDataSo
             v.centerYAnchor.constraint(equalTo: p.centerYAnchor),
             v.leadingAnchor.constraint(equalTo: gameDescLabel.trailingAnchor, constant: 40)
             ]}
-    
-//        view.add(subview: platformImageView) { (v, p) in [
-//            v.topAnchor.constraint(equalTo: p.safeAreaLayoutGuide.topAnchor, constant: 15),
-//            v.centerXAnchor.constraint(equalTo: p.centerXAnchor),
-//            v.heightAnchor.constraint(equalToConstant: 35),
-//            v.widthAnchor.constraint(equalToConstant: 35)
-//            ]}
-//
         
         view.add(subview: tableView) { (v, p) in [
             v.topAnchor.constraint(equalTo: barContainerView.bottomAnchor),
@@ -203,24 +197,52 @@ class PlayerTableViewCell: UITableViewCell, Configurable {
 class MainController: UIViewController, Loadable {
     
     func loadData() {
+        FirebaseManager.shared.fetchCurrentUser(uid: (Auth.auth().currentUser?.uid)!) { (player, err) in
+            if let err = err {
+                self.showAlert(title: "Error", message: err.localizedDescription, completion: {})
+            }
+            else {
+                guard let player = player else { return }
+                SessionManager.shared.start(call: RLClient.GetPlayer(tag: "player", query: ["apikey": BaseConfig.shared.apiKey, "unique_id": "76561198118155495", "platform_id": "1"]), completion: { (result) in
+                    result.onSuccess { value in
+                        let playerData = value.player
+
+                        if let avatarURLString = playerData.avatar {
+                            SDWebImageDownloader.shared().downloadImage(with: URL(string: avatarURLString)!, options: SDWebImageDownloaderOptions.lowPriority, progress: nil, completed: { (image, data, err, finished) in
+                                if let image = image {
+                                    if finished {
+    
         
+                                        let sideMenuVC = SideMenuViewController(headerImage: image)
+                                        let menuLeftNavigationController = UISideMenuNavigationController(rootViewController: sideMenuVC)
+                                        SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
+                                        SideMenuManager.default.menuWidth = max(round(min((UIScreen.main.bounds.width), (UIScreen.main.bounds.height)) * 0.80), 240)
+                                        
+                                        self.navigationItem.leftBarButtonItem = self.leftBarItem
+                                        self.navigationItem.rightBarButtonItems = [ self.rightBarItem, self.modeBarItem ]
+                                    }
+                                }
+                            })
+                        }
+                        }.onError { err in
+                            self.showAlert(title: "Error", message: err.localizedDescription, completion: {})
+                    }
+                })
+            }
+        }
     }
+    
+    var currentUserImage = UIImage()
+    var currentPlatform = "Steam"
     
     lazy var rightBarItem = UIBarButtonItem(image: #imageLiteral(resourceName: "RL_sort_50").withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(rightBarItemTapped))
     lazy var leftBarItem = UIBarButtonItem(image: #imageLiteral(resourceName: "RL_burgermenu_50").withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(leftBarItemTapped))
     lazy var modeBarItem = UIBarButtonItem(image: #imageLiteral(resourceName: "RL_people_50").withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(modeBarItemTapped))
     
-    var currentPlatform = "Steam"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let menuLeftNavigationController = UISideMenuNavigationController(rootViewController: SideMenuViewController())
-        SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
-        SideMenuManager.default.menuWidth = max(round(min((UIScreen.main.bounds.width), (UIScreen.main.bounds.height)) * 0.80), 240)
-        
-        navigationItem.leftBarButtonItem = leftBarItem
-        navigationItem.rightBarButtonItems = [ rightBarItem, modeBarItem ]
     }
     
     @objc func modeBarItemTapped() {

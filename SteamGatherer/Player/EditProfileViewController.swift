@@ -37,7 +37,7 @@ class EditProfileViewController: BaseViewController, Loadable, UITextFieldDelega
         
         FirebaseManager.shared.fetchCurrentUser(uid: uid) { (player, err) in
             if let err = err {
-                self.showAlert(title: "Error", message: err.localizedDescription, completion: nil)
+                self.showAlert(title: "Error", message: err.localizedDescription, completion: {})
             }
             else {
                 
@@ -161,7 +161,7 @@ class EditProfileViewController: BaseViewController, Loadable, UITextFieldDelega
         
         nameDescLabel.text = "Name"
         modeDescLabel.text = "Mode"
-        rankDescLabel.text = "Rank"
+        rankDescLabel.text = "Estimated Rank"
         gatherActionDescLabel.text = "Gather Action"
         
         view.backgroundColor = UIColor.RL.mainDarker
@@ -336,7 +336,7 @@ class EditProfileViewController: BaseViewController, Loadable, UITextFieldDelega
             let player = Player(id: uid, name: nameText, rank: rankText, platformID: platformIDText, platform: currentPlatform, mode: modeText, gatherAction: gatherActionText)
             FirebaseManager.shared.updateCurrentUser(player: player) { (err) in
                 if let err = err {
-                    self.showAlert(title: "Error", message: err.localizedDescription, completion: nil)
+                    self.showAlert(title: "Error", message: err.localizedDescription, completion: {})
                 }
                 else { 
                     SessionManager.shared.setNewUser(false)

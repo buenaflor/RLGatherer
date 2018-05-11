@@ -16,13 +16,15 @@ class BaseFormViewController: UIViewController, UITextFieldDelegate {
     let titleLabel = Label(font: .RLBoldLarge, textAlignment: .center, textColor: .white, numberOfLines: 1)
     
     lazy var emailTextField: InputTextField = {
-        let tf = InputTextField(placeHolder: "Email")
+        let tf = InputTextField(placeHolder: "")
+        tf.attributedPlaceholder = NSAttributedString.String("Email", font: .RLRegularLarge, color: UIColor.RL.mainDarkComplementary)
         tf.delegate = self
         return tf
     }()
     
     lazy var passwordTextField: InputTextField = {
-        let tf = InputTextField(placeHolder: "Password")
+        let tf = InputTextField(placeHolder: "")
+        tf.attributedPlaceholder = NSAttributedString.String("Password", font: .RLRegularLarge, color: UIColor.RL.mainDarkComplementary)
         tf.delegate = self
         tf.isSecureTextEntry = true
         return tf
@@ -168,7 +170,7 @@ class LoginViewController: BaseFormViewController {
     
     @objc func loginButtonTapped() {
         guard let username = emailTextField.text, let password = passwordTextField.text else {
-            showAlert(title: "Error", message: "Something went wrong")
+            showAlert(title: "Error", message: "Something went wrong", completion: {})
             return
         }
 
@@ -176,39 +178,38 @@ class LoginViewController: BaseFormViewController {
             if username.isEmpty && password.isEmpty {
                 emailTextField.layer.borderColor = UIColor.red.cgColor
                 passwordTextField.layer.borderColor = UIColor.red.cgColor
-                showAlert(title: "Error", message: "Enter your password and username!")
+                showAlert(title: "Error", message: "Enter your password and username!", completion: {})
             }
             else {
                 if username.isEmpty {
                     emailTextField.layer.borderColor = UIColor.red.cgColor
-                    showAlert(title: "Error", message: "Enter your username!")
+                    showAlert(title: "Error", message: "Enter your username!", completion: {})
                 }
                 if password.isEmpty {
                     passwordTextField.layer.borderColor = UIColor.red.cgColor
-                    showAlert(title: "Error", message: "Enter your password!")
+                    showAlert(title: "Error", message: "Enter your password!", completion: {})
                 }
             }
         }
         else {
             Auth.auth().signIn(withEmail: username, password: password) { (user, error) in
                 if let error = error {
-                    self.showAlert(title: "Error", message: error.localizedDescription)
+                    self.showAlert(title: "Error", message: error.localizedDescription, completion: {})
                 }
                 else {
-                    
-                    // ToDo: Check if information has been filled out (fetch data from firebase), if not, set newUser to true
-                    
                     FirebaseManager.shared.fetchCurrentUser(uid: (user?.uid)!, completion: { (player, err) in
                         if let err = err {
-                            self.showAlert(title: "Error", message: err.localizedDescription, completion: nil)
+                            self.showAlert(title: "Error", message: err.localizedDescription, completion: {})
                         }
                         else {
                             guard let player = player else { return }
+                            
                             if player.mode == "" || player.rank == "" || player.platformID == "" || player.gatherAction == "" {
                                 SessionManager.shared.setNewUser(true)
-                                SessionManager.shared.updateAuthentication()
-                                self.dismiss(animated: true, completion: nil)
                             }
+                            
+                            SessionManager.shared.updateAuthentication()
+                            self.dismiss(animated: true, completion: nil)
                         }
                     })
                 }

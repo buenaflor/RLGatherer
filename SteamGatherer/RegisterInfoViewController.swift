@@ -170,20 +170,20 @@ class RegisterInfoViewController: UIViewController, UITextFieldDelegate, TiersVi
     @objc func registerBarButtonItemTapped() {
         guard let nameText = nameTextField.text else { return }
         if nameText == "" {
-            showAlert(title: "Enter your name!")
+            showAlert(title: "Enter your name!", completion: {})
         }
         else {
             guard let email = email, let password = password else { return }
             Auth.auth().createUser(withEmail: email, password: password) { (user, err) in
                 if let err = err {
-                    self.showAlert(title: "Error", message: err.localizedDescription)
+                    self.showAlert(title: "Error", message: err.localizedDescription, completion: {})
                 }
                 else {
                     guard let uid = user?.uid, let nameText = self.nameTextField.text, let platformText = self.platformTextField.text, let platformIDText = self.platformIDTextField.text else { return }
                     let player = Player(id: uid, name: nameText, rank: "", platformID: platformIDText, platform: platformText, mode: "", gatherAction: "")
                     FirebaseManager.shared.addNewUser(player: player, completion: { (err) in
                         if let err = err {
-                            self.showAlert(title: "Error", message: err.localizedDescription)
+                            self.showAlert(title: "Error", message: err.localizedDescription, completion: {})
                         }
                         else {
                             self.dismiss(animated: true, completion: nil)
@@ -383,15 +383,15 @@ class RegisterInfoViewController: UIViewController, UITextFieldDelegate, TiersVi
                         self.navigationItem.rightBarButtonItem = registerBarButtonItem
                         
                         }.onError { err in
-                            self.showAlert(title: "Error", message: err.localizedDescription)
+                            self.showAlert(title: "Error", message: err.localizedDescription, completion: {})
                     }
                 }
             } else {
                 if platformTextField.text == "" {
-                    showAlert(title: "Missing Characters", message: "Choose a platform!")
+                    showAlert(title: "Missing Characters", message: "Choose a platform!", completion: {})
                 }
                 else {
-                    showAlert(title: "Missing Characters", message: "Enter the appropriate tags based on your platform!")
+                    showAlert(title: "Missing Characters", message: "Enter the appropriate tags based on your platform!", completion: {})
                 }
             }
         }
