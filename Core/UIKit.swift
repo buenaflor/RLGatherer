@@ -177,3 +177,13 @@ public extension UIViewController {
     }
 }
 
+
+// MARK: - NSAttributedString
+
+public extension NSAttributedString {
+    
+    static func String(_ string: String, font: UIFont, color: UIColor) -> NSAttributedString {
+        return NSAttributedString(string: string, attributes: [NSAttributedStringKey.font : font, NSAttributedStringKey.foregroundColor: color])
+    }
+}
+

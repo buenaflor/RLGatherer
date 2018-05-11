@@ -176,7 +176,8 @@ struct GetPlayerResponse: Codable {
 struct PlayerData: Codable {
     let uniqueId, displayName: String
     let platform: Platform
-    let avatar, profileUrl, signatureUrl: String
+    let avatar: String?
+    let profileUrl, signatureUrl: String
     let stats: Stats
     let rankedSeasons: [String: [String: RankedSeason]]
     let lastRequested, createdAt, updatedAt, nextUpdateAt: Int

@@ -51,4 +51,19 @@ extension Player: DocumentSerializable {
     }
 }
 
+extension Player {
+    var platformNameID: Int {
+        switch platform {
+        case "Steam":
+            return 1
+        case "PS4":
+            return 2
+        case "XboxOne":
+            return 3
+        default:
+            return 0
+        }
+    }
+}
+
 

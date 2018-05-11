@@ -26,6 +26,9 @@
 		3415C91220A0B5E7009CBF30 /* RLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3415C91120A0B5E7009CBF30 /* RLResponse.swift */; };
 		3415C91420A183DA009CBF30 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3415C91320A183DA009CBF30 /* GroupViewController.swift */; };
 		3415C91620A18CC3009CBF30 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3415C91520A18CC3009CBF30 /* SideMenuViewController.swift */; };
+		34A2760620A591AA00B15F01 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A2760520A591AA00B15F01 /* EditProfileViewController.swift */; };
+		34A2760820A5928300B15F01 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A2760720A5928300B15F01 /* Constants.swift */; };
+		34A2760A20A595EF00B15F01 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A2760920A595EF00B15F01 /* BaseViewController.swift */; };
 		34C39F3E20A2D8D5007F771A /* ModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C39F3D20A2D8D5007F771A /* ModeViewController.swift */; };
 		34C39F4020A2F5C6007F771A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C39F3F20A2F5C6007F771A /* Model.swift */; };
 		34C39F4320A30033007F771A /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C39F4220A30033007F771A /* PlayerViewController.swift */; };
@@ -81,6 +84,9 @@
 		3415C91120A0B5E7009CBF30 /* RLResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLResponse.swift; sourceTree = "<group>"; };
 		3415C91320A183DA009CBF30 /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		3415C91520A18CC3009CBF30 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
+		34A2760520A591AA00B15F01 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		34A2760720A5928300B15F01 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		34A2760920A595EF00B15F01 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		34C39F3D20A2D8D5007F771A /* ModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeViewController.swift; sourceTree = "<group>"; };
 		34C39F3F20A2F5C6007F771A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		34C39F4220A30033007F771A /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				3415C8E820A093C6009CBF30 /* BaseViews.swift */,
+				34A2760920A595EF00B15F01 /* BaseViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -183,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				34C39F4220A30033007F771A /* PlayerViewController.swift */,
+				34A2760520A591AA00B15F01 /* EditProfileViewController.swift */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -252,9 +260,10 @@
 				3415C91120A0B5E7009CBF30 /* RLResponse.swift */,
 				3415C90520A09FF6009CBF30 /* SessionManager.swift */,
 				34C39F4420A300C6007F771A /* FirebaseManager.swift */,
+				34C39F3F20A2F5C6007F771A /* Model.swift */,
 				3415C90120A09711009CBF30 /* UIColor.swift */,
 				3415C8E520A09330009CBF30 /* UIKit.swift */,
-				34C39F3F20A2F5C6007F771A /* Model.swift */,
+				34A2760720A5928300B15F01 /* Constants.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -624,7 +633,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3415C8E620A09330009CBF30 /* UIKit.swift in Sources */,
+				34A2760820A5928300B15F01 /* Constants.swift in Sources */,
 				3415C90220A09711009CBF30 /* UIColor.swift in Sources */,
+				34A2760A20A595EF00B15F01 /* BaseViewController.swift in Sources */,
 				3415C91020A0AE31009CBF30 /* MainTabBarController.swift in Sources */,
 				34C39F4720A312BB007F771A /* RegisterInfoViewController.swift in Sources */,
 				3415C90620A09FF6009CBF30 /* SessionManager.swift in Sources */,
@@ -643,6 +654,7 @@
 				34CE860820A08C32002EE744 /* AppDelegate.swift in Sources */,
 				3415C90920A0A0A8009CBF30 /* HomeViewController.swift in Sources */,
 				34C39F4320A30033007F771A /* PlayerViewController.swift in Sources */,
+				34A2760620A591AA00B15F01 /* EditProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -810,7 +822,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SteamGatherer/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.giancarlobuenaflor.SteamGatherer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -825,7 +840,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SteamGatherer/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.giancarlobuenaflor.SteamGatherer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -841,7 +859,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SteamGathererTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.giancarlobuenaflor.SteamGathererTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -858,7 +880,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SteamGathererTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.giancarlobuenaflor.SteamGathererTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -874,7 +900,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SteamGathererUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.giancarlobuenaflor.SteamGathererUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -890,7 +920,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SteamGathererUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.giancarlobuenaflor.SteamGathererUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

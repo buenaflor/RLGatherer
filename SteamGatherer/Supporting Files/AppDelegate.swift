@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         showLoginIfNeeded(animated: true)
         
-        SessionManager.shared.setNewUser(false)
+//        SessionManager.shared.setNewUser(false)
         SessionManager.shared.signOut()
         
         let navigationBarAppearance = UINavigationBar.appearance()

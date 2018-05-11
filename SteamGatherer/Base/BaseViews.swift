@@ -45,7 +45,9 @@ class InputTextField: UITextField {
         font = UIFont.RLRegularLarge
         returnKeyType = .next
         backgroundColor = .white
-        placeholder = placeHolder
+        
+        attributedPlaceholder = NSAttributedString(string: placeHolder!, attributes: [NSAttributedStringKey.font : UIFont.RLRegularLarge, NSAttributedStringKey.foregroundColor: UIColor.white])
+        
         autocorrectionType = .no
         autocapitalizationType = .none
         enablesReturnKeyAutomatically = true

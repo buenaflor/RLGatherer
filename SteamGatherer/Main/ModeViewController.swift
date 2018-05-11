@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol ModeViewControllerDelegate: class{
+    func modeViewController(_ modeViewController: ModeViewController, didSelect mode: Playlist)
+}
+
 class ModeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    weak var delegate: ModeViewControllerDelegate?
     
     lazy var exitItem = UIBarButtonItem(image: #imageLiteral(resourceName: "RL_exit_50").withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(exitItemTapped))
     
@@ -30,11 +36,23 @@ class ModeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var playlists = [Playlist]()
     var filteredPlaylists = [Playlist]()
     
-    init(currentPlatform: String) {
+    var presentationStyle: PresentationStyle?
+    
+    init(currentPlatform: String, presentationStyle: PresentationStyle) {
         super.init(nibName: nil, bundle: nil)
         
         navigationItem.titleView = self.titleView
         titleView.text = currentPlatform
+        
+        self.presentationStyle = presentationStyle
+        
+        if presentationStyle == .present {
+            navigationItem.rightBarButtonItem = exitItem
+            navigationItem.leftBarButtonItem = modeBarItem
+        }
+        else {
+            navigationItem.rightBarButtonItem = modeBarItem
+        }
         
         SessionManager.shared.start(call: RLClient.GetPlaylists(tag: "data/playlists", query: ["apikey": BaseConfig.shared.apiKey])) { (result) in
             result.onSuccess { value in
@@ -62,14 +80,12 @@ class ModeViewController: UIViewController, UITableViewDelegate, UITableViewData
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor.RL.mainDarker
-        
-        navigationItem.rightBarButtonItem = exitItem
-        navigationItem.leftBarButtonItem = modeBarItem
+
         
         modeBarItem.setTitleTextAttributes([NSAttributedStringKey.font : UIFont.RLRegularLarge], for: .normal)
         
@@ -99,8 +115,18 @@ class ModeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow()
+        let playlist = filteredPlaylists[indexPath.row]
         
-        dismiss(animated: true, completion: nil)
+        delegate?.modeViewController(self, didSelect: playlist)
+        
+        guard let presentationStyle = presentationStyle else { return }
+        
+        if presentationStyle == .present {
+            dismiss(animated: true, completion: nil)
+        }
+        else {
+            navigationController?.popViewController(animated: true)
+        }
     }
     
     @objc func modeBarItemTapped() {

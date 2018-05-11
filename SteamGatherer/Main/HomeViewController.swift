@@ -130,7 +130,7 @@ class HomeViewController: MainController, UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow()
         
-        let playerVC = PlayerViewController()
+        let playerVC = PlayerViewController(presentationStyle: .push)
         navigationController?.pushViewController(playerVC, animated: true)
     }
 }
@@ -224,7 +224,7 @@ class MainController: UIViewController, Loadable {
     }
     
     @objc func modeBarItemTapped() {
-        let modeVC = ModeViewController(currentPlatform: currentPlatform)
+        let modeVC = ModeViewController(currentPlatform: currentPlatform, presentationStyle: .present)
         present(modeVC.wrapped(), animated: true, completion: nil)
     }
     

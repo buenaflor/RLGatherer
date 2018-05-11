@@ -198,9 +198,19 @@ class LoginViewController: BaseFormViewController {
                     
                     // ToDo: Check if information has been filled out (fetch data from firebase), if not, set newUser to true
                     
-                    SessionManager.shared.updateAuthentication()
-                    self.dismiss(animated: true, completion: nil)
-                    print(SessionManager.shared.isLoggedIn)
+                    FirebaseManager.shared.fetchCurrentUser(uid: (user?.uid)!, completion: { (player, err) in
+                        if let err = err {
+                            self.showAlert(title: "Error", message: err.localizedDescription, completion: nil)
+                        }
+                        else {
+                            guard let player = player else { return }
+                            if player.mode == "" || player.rank == "" || player.platformID == "" || player.gatherAction == "" {
+                                SessionManager.shared.setNewUser(true)
+                                SessionManager.shared.updateAuthentication()
+                                self.dismiss(animated: true, completion: nil)
+                            }
+                        }
+                    })
                 }
             }
         }
