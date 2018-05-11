@@ -69,6 +69,29 @@ extension GetTiersResponse: ResponseParser {
     }
 }
 
+extension Tier {
+    var shortedTierName: String {
+        if tierName.contains("Platinum") {
+            return tierName.replacingOccurrences(of: "Platinum", with: "Plat.")
+        }
+        if tierName.contains("Grand Champion") {
+            return "GC"
+        }
+        if tierName.contains("Champion") {
+            return tierName.replacingOccurrences(of: "Champion", with: "Champ.")
+        }
+        if tierName.contains("Diamond") {
+            return tierName.replacingOccurrences(of: "Diamond", with: "Dia.")
+        }
+        if tierName.contains("Unranked") {
+            return "UNR"
+        }
+        else {
+            return tierName
+        }
+    }
+}
+
 
 // MARK: - Get Playlists
 
@@ -151,20 +174,12 @@ struct GetPlayerResponse: Codable {
 }
 
 struct PlayerData: Codable {
-    let uniqueID, displayName: String
+    let uniqueId, displayName: String
     let platform: Platform
-    let avatar, profileURL, signatureURL: String
+    let avatar, profileUrl, signatureUrl: String
     let stats: Stats
     let rankedSeasons: [String: [String: RankedSeason]]
     let lastRequested, createdAt, updatedAt, nextUpdateAt: Int
-    
-    enum codingKeys: String, CodingKey {
-        case uniqueID = "uniqueId"
-        case displayName, platform, avatar
-        case profileURL = "profileUrl"
-        case signatureURL = "signatureUrl"
-        case stats, rankedSeasons, lastRequested, createdAt, updatedAt, nextUpdateAt
-    }
 }
 
 struct RankedSeason: Codable {

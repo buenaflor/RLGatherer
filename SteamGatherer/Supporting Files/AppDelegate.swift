@@ -35,14 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         SessionManager.shared.signOut()
         
-        SessionManager.shared.start(call: RLClient.GetPlayer(tag: "player", query: ["unique_id": "76561198089225861", "apikey": BaseConfig.shared.apiKey])) { (result) in
-            result.onSuccess { value in
-                print(value)
-                }.onError { err in
-                    print(err)
-            }
-        }
-        
         return true
     }
     

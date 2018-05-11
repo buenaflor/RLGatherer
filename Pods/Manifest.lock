@@ -43,6 +43,9 @@ PODS:
   - SCPageViewController (2.0.13):
     - SCScrollView (~> 1.1)
   - SCScrollView (1.1.8)
+  - SDWebImage (4.3.3):
+    - SDWebImage/Core (= 4.3.3)
+  - SDWebImage/Core (4.3.3)
   - SideMenu (3.1.5)
   - Unbox (3.0.0)
 
@@ -52,6 +55,7 @@ DEPENDENCIES:
   - Firebase/Core
   - RealmSwift
   - SCPageViewController
+  - SDWebImage
   - SideMenu
   - Unbox
 
@@ -69,9 +73,10 @@ SPEC CHECKSUMS:
   RealmSwift: 3322562622fda2ad596985ead4d8d8be30cf838c
   SCPageViewController: 6470029718238e7138c46490dbd326fa074dbd13
   SCScrollView: 247186f377f0b3b8eb4c0a96a2c742b322414f9f
+  SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
   SideMenu: 47dbf9e4d878062d8994aed43f6e4bf6c1fea30b
   Unbox: 9ed33b2a31f7a8a049f54b94d40c4a52a28c4d9d
 
-PODFILE CHECKSUM: 3064bc283bc5e37fdf060148e55a648c358a2f8c
+PODFILE CHECKSUM: 5d05bdeb844d2611ec99242fa6b78096a0c9f627
 
 COCOAPODS: 1.4.0.beta.2

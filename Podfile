@@ -13,6 +13,7 @@ target 'SteamGatherer' do
   pod 'SCPageViewController'
   pod 'Unbox'
   pod 'RealmSwift'
+  pod 'SDWebImage'
 
   target 'SteamGathererTests' do
     inherit! :search_paths
