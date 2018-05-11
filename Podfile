@@ -9,6 +9,8 @@ target 'SteamGatherer' do
   pod 'Endpoints'
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
+  pod 'Firebase/Storage'
   pod 'SideMenu'
   pod 'SCPageViewController'
   pod 'Unbox'

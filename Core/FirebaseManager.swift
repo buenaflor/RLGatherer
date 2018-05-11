@@ -8,9 +8,14 @@
 
 import Foundation
 import Firebase
+import FirebaseStorage
 
 class FirebaseManager {
     static let shared = FirebaseManager()
     
+    private let db = Firestore.firestore()
     
+    func addNewUser(_ uid: String) {
+        
+    }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 import SDWebImage
 
 class RegisterInfoViewController: UIViewController, UITextFieldDelegate, TiersViewControllerDelegate {
@@ -56,6 +57,15 @@ class RegisterInfoViewController: UIViewController, UITextFieldDelegate, TiersVi
         btn.addTarget(self, action: #selector(choosePlatformButtonTapped), for: .touchUpInside)
         return btn
     }()
+
+    lazy var proceedButton: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("Confirm", for: .normal)
+        btn.backgroundColor = UIColor.RL.mainDarkHighlight
+        btn.layer.cornerRadius = 4
+        btn.addTarget(self, action: #selector(choosePlatformButtonTapped), for: .touchUpInside)
+        return btn
+    }()
     
     let oneVoneLabel = Label(font: .RLRegularLarge, textAlignment: .center, textColor: .white, numberOfLines: 1)
     let twoVtwoLabel = Label(font: .RLRegularLarge, textAlignment: .center, textColor: .white, numberOfLines: 1)
@@ -100,7 +110,9 @@ class RegisterInfoViewController: UIViewController, UITextFieldDelegate, TiersVi
         view.backgroundColor = UIColor.RL.mainDarker
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(endEditing)))
         
-        infoDescLabel.text = "Link your Steam ID to start matching"
+        let infoAttributedString = NSMutableAttributedString(string: "Link your Steam ID to start matching\n")
+        infoAttributedString.append(NSAttributedString(string: "You can also confirm without linking your profile. However, your account won't appear for matching unless you add it afterwards", attributes: [NSAttributedStringKey.font : UIFont.RLMedium]))
+        infoDescLabel.attributedText = infoAttributedString
         
         view.add(subview: infoDescLabel) { (v, p) in [
             v.topAnchor.constraint(equalTo: p.safeAreaLayoutGuide.topAnchor, constant: 20),
@@ -135,6 +147,13 @@ class RegisterInfoViewController: UIViewController, UITextFieldDelegate, TiersVi
             v.trailingAnchor.constraint(equalTo: p.trailingAnchor, constant: -35),
             v.heightAnchor.constraint(equalToConstant: 55)
             ]}
+        
+        view.add(subview: proceedButton) { (v, p) in [
+            v.topAnchor.constraint(equalTo: platformIDTextField.bottomAnchor, constant: 24),
+            v.leadingAnchor.constraint(equalTo: p.leadingAnchor, constant: 35),
+            v.trailingAnchor.constraint(equalTo: p.trailingAnchor, constant: -35),
+            v.heightAnchor.constraint(equalToConstant: 58)
+            ]}
     }
     
     @objc func endEditing() {
@@ -146,6 +165,24 @@ class RegisterInfoViewController: UIViewController, UITextFieldDelegate, TiersVi
         let tiersVC = TiersViewController()
         tiersVC.delegate = self
         navigationController?.pushViewController(tiersVC, animated: true)
+    }
+    
+    @objc func registerBarButtonItemTapped() {
+        guard let nameText = nameTextField.text else { return }
+        if nameText == "" {
+            showAlert(title: "Enter your name!")
+        }
+        else {
+            guard let email = email, let password = password else { return }
+            Auth.auth().createUser(withEmail: email, password: password) { (user, err) in
+                if let err = err {
+                    self.showAlert(title: "Error", message: err.localizedDescription)
+                }
+                else {
+                    
+                }
+            }
+        }
     }
     
     @objc func choosePlatformButtonTapped() {
@@ -197,6 +234,8 @@ class RegisterInfoViewController: UIViewController, UITextFieldDelegate, TiersVi
                                 tempSeason = tempSeason + 1
                             })
                             
+                            self.proceedButton.removeFromSuperview()
+                            
                             let season = player.rankedSeasons["\(tempSeason)"]
                             season?.forEach({ (key, value) in
                                 SessionManager.shared.tiers.forEach({ (sharedTier) in
@@ -211,8 +250,10 @@ class RegisterInfoViewController: UIViewController, UITextFieldDelegate, TiersVi
                                             self.twoVtwoRankImageView.image = UIImage(named: sharedTier.tierName)
                                         case 12:
                                             self.threeVthreeSoloRankLabel.text = "\(sharedTier.shortedTierName)"
+                                            self.threeVthreeSoloRankImageView.image = UIImage(named: sharedTier.tierName)
                                         case 13:
                                             self.threeVthreeStandardRankLabel.text = "\(sharedTier.shortedTierName)"
+                                            self.threeVthreeStandardRankImageView.image = UIImage(named: sharedTier.tierName)
                                         default:
                                             break
                                         }
@@ -220,11 +261,9 @@ class RegisterInfoViewController: UIViewController, UITextFieldDelegate, TiersVi
                                 })
                             })
                             
-                            
                             self.avatarImageView.sd_setImage(with: avatarURL)
                             self.displayNameLabel.text = player.displayName
                             self.platformIDLabel.text = "\(self.currentPlatform) ID: \(player.uniqueId)"
-                            
                             
                             
                             let topContainerView = UIView()
@@ -258,39 +297,75 @@ class RegisterInfoViewController: UIViewController, UITextFieldDelegate, TiersVi
                             self.avatarImageView.layer.cornerRadius = 40
                             
                             self.view.add(subview: self.oneVoneLabel, createConstraints: { (v, p) in [
-                                v.topAnchor.constraint(equalTo: topContainerView.bottomAnchor, constant: 20),
-                                v.centerXAnchor.constraint(equalTo: p.centerXAnchor, constant: -70)
+                                v.topAnchor.constraint(equalTo: topContainerView.bottomAnchor, constant: 12),
+                                v.centerXAnchor.constraint(equalTo: p.centerXAnchor, constant: -85)
                                 ]})
                             
                             self.view.add(subview: self.twoVtwoLabel, createConstraints: { (v, p) in [
-                                v.topAnchor.constraint(equalTo: topContainerView.bottomAnchor, constant: 20),
-                                v.centerXAnchor.constraint(equalTo: p.centerXAnchor, constant: 70)
+                                v.topAnchor.constraint(equalTo: topContainerView.bottomAnchor, constant: 12),
+                                v.centerXAnchor.constraint(equalTo: p.centerXAnchor, constant: 85)
                                 ]})
                             
                             self.view.add(subview: self.oneVoneRankLabel, createConstraints: { (v, p) in [
                                 v.topAnchor.constraint(equalTo: self.oneVoneLabel.bottomAnchor, constant: 5),
-                                v.centerXAnchor.constraint(equalTo: p.centerXAnchor, constant: -70)
+                                v.centerXAnchor.constraint(equalTo: p.centerXAnchor, constant: -85)
                                 ]})
                             
                             self.view.add(subview: self.twoVtwoRankLabel, createConstraints: { (v, p) in [
                                 v.topAnchor.constraint(equalTo: self.twoVtwoLabel.bottomAnchor, constant: 5),
-                                v.centerXAnchor.constraint(equalTo: p.centerXAnchor, constant: 70)
+                                v.centerXAnchor.constraint(equalTo: p.centerXAnchor, constant: 85)
                                 ]})
                             
                             self.view.add(subview: self.oneVoneRankImageView, createConstraints: { (v, p) in [
                                 v.topAnchor.constraint(equalTo: self.oneVoneRankLabel.bottomAnchor, constant: 5),
-                                v.centerXAnchor.constraint(equalTo: p.centerXAnchor, constant: -70),
+                                v.centerXAnchor.constraint(equalTo: p.centerXAnchor, constant: -85),
                                 v.heightAnchor.constraint(equalToConstant: 50),
                                 v.widthAnchor.constraint(equalToConstant: 50)
                                 ]})
                             
                             self.view.add(subview: self.twoVtwoRankImageView, createConstraints: { (v, p) in [
                                 v.topAnchor.constraint(equalTo: self.twoVtwoRankLabel.bottomAnchor, constant: 5),
-                                v.centerXAnchor.constraint(equalTo: p.centerXAnchor, constant: 70),
+                                v.centerXAnchor.constraint(equalTo: p.centerXAnchor, constant: 85),
                                 v.heightAnchor.constraint(equalToConstant: 50),
                                 v.widthAnchor.constraint(equalToConstant: 50)
                                 ]})
                             
+                            self.view.add(subview: self.threeVthreeSoloLabel, createConstraints: { (v, p) in [
+                                v.topAnchor.constraint(equalTo: self.oneVoneRankImageView.bottomAnchor, constant: 10),
+                                v.centerXAnchor.constraint(equalTo: p.centerXAnchor, constant: -85)
+                                ]})
+                            
+                            self.view.add(subview: self.threeVthreeStandardLabel, createConstraints: { (v, p) in [
+                                v.topAnchor.constraint(equalTo: self.twoVtwoRankImageView.bottomAnchor, constant: 10),
+                                v.centerXAnchor.constraint(equalTo: p.centerXAnchor, constant: 85)
+                                ]})
+                            
+                            self.view.add(subview: self.threeVthreeSoloRankLabel, createConstraints: { (v, p) in [
+                                v.topAnchor.constraint(equalTo: self.threeVthreeSoloLabel.bottomAnchor, constant: 5),
+                                v.centerXAnchor.constraint(equalTo: p.centerXAnchor, constant: -85)
+                                ]})
+                            
+                            self.view.add(subview: self.threeVthreeStandardRankLabel, createConstraints: { (v, p) in [
+                                v.topAnchor.constraint(equalTo: self.threeVthreeStandardLabel.bottomAnchor, constant: 5),
+                                v.centerXAnchor.constraint(equalTo: p.centerXAnchor, constant: 85)
+                                ]})
+                            
+                            self.view.add(subview: self.threeVthreeSoloRankImageView, createConstraints: { (v, p) in [
+                                v.topAnchor.constraint(equalTo: self.threeVthreeSoloRankLabel.bottomAnchor, constant: 5),
+                                v.centerXAnchor.constraint(equalTo: p.centerXAnchor, constant: -85),
+                                v.heightAnchor.constraint(equalToConstant: 50),
+                                v.widthAnchor.constraint(equalToConstant: 50)
+                                ]})
+                            
+                            self.view.add(subview: self.threeVthreeStandardRankImageView, createConstraints: { (v, p) in [
+                                v.topAnchor.constraint(equalTo: self.threeVthreeStandardRankLabel.bottomAnchor, constant: 5),
+                                v.centerXAnchor.constraint(equalTo: p.centerXAnchor, constant: 85),
+                                v.heightAnchor.constraint(equalToConstant: 50),
+                                v.widthAnchor.constraint(equalToConstant: 50)
+                                ]})
+                            
+                            let registerBarButtonItem = UIBarButtonItem(title: "Confirm/Register", style: .plain, target: self, action: #selector(self.registerBarButtonItemTapped))
+                            self.navigationItem.rightBarButtonItem = registerBarButtonItem
                         }
                         
                         }.onError { err in
