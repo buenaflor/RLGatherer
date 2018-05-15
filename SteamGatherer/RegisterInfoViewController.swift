@@ -250,6 +250,8 @@ class RegisterInfoViewController: UIViewController, UITextFieldDelegate, TiersVi
                             tempSeason = tempSeason + 1
                         })
                         
+                        let currentSeason = player.rankedSeasons.count
+                        
                         self.proceedButton.removeFromSuperview()
                         
                         let season = player.rankedSeasons["\(tempSeason)"]

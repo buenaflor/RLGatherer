@@ -46,6 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         let loginVC = LoginViewController()
+        loginVC.mainTabBarController = self.mainTabBarController
         present(loginVC, animated: animated, completion: completion)
     }
     
@@ -54,10 +55,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
+        
+        // Set loading animation until it is done
+        self.mainTabBarController.mainVC.navigationItem.leftBarButtonItem = self.mainTabBarController.mainVC.activityIndicatorItem
+        
         SessionManager.shared.start(call: RLClient.GetTiers(tag: "data/tiers", query: ["apikey": BaseConfig.shared.apiKey])) { (result) in
             result.onSuccess { value in
                 SessionManager.shared.tiers = value.tiers
-                self.mainTabBarController.mainVC.loadData()
+                    self.mainTabBarController.mainVC.loadData()
                 }.onError { err in
                     print(err)
             }

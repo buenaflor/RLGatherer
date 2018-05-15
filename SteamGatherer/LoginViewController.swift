@@ -83,6 +83,8 @@ class BaseFormViewController: UIViewController, UITextFieldDelegate {
 
 class LoginViewController: BaseFormViewController {
     
+    var mainTabBarController = TabBarPageViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -203,6 +205,7 @@ class LoginViewController: BaseFormViewController {
                         }
                         else {
                             guard let player = player else { return }
+                            self.mainTabBarController.mainVC.loadData()
                             
                             if player.mode == "" || player.rank == "" || player.platformID == "" || player.gatherAction == "" {
                                 SessionManager.shared.setNewUser(true)

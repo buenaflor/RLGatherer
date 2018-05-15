@@ -63,6 +63,30 @@ class FirebaseManager {
             }
         }
     }
+    
+    func fetchUsers(completion: @escaping ([Player]?, Error?) -> Void) {
+        db.collection(Firebase.Key.collection).getDocuments { (querySnapshot, err) in
+            if let err = err {
+                completion(nil, err)
+            }
+            else {
+                if let players = querySnapshot?.documents.compactMap({
+                    $0.data().flatMap({ (data) in
+                        return Player(dictionary: data)
+                    })
+                }) {
+                    let filteredPlayers = players.filter({ (player) in
+                        if player.gatherAction.isEmpty || player.mode.isEmpty || player.rank.isEmpty {
+                            return false
+                        }
+                        return true
+                    })
+                    
+                    completion(filteredPlayers, nil)
+                }
+            }
+        }
+    }
 }
 
 extension FirebaseManager {

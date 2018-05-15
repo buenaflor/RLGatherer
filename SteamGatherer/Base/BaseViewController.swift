@@ -12,6 +12,12 @@ class BaseViewController: UIViewController {
     lazy var activityIndicator: UIActivityIndicatorView = {
         let av = UIActivityIndicatorView(activityIndicatorStyle: .white)
         av.startAnimating()
+        av.hidesWhenStopped = true
         return av
+    }()
+    
+    lazy var activityIndicatorItem: UIBarButtonItem = {
+        let btn = UIBarButtonItem(customView: self.activityIndicator)
+        return btn
     }()
 }

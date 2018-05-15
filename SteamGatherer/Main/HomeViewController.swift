@@ -194,36 +194,48 @@ class PlayerTableViewCell: UITableViewCell, Configurable {
 }
 
 
-class MainController: UIViewController, Loadable {
+class MainController: BaseViewController, Loadable {
     
     func loadData() {
-        FirebaseManager.shared.fetchCurrentUser(uid: (Auth.auth().currentUser?.uid)!) { (player, err) in
+        guard let userUID = Auth.auth().currentUser?.uid else { return }
+        FirebaseManager.shared.fetchCurrentUser(uid: (userUID)) { (player, err) in
             if let err = err {
                 self.showAlert(title: "Error", message: err.localizedDescription, completion: {})
             }
             else {
                 guard let player = player else { return }
+                
                 SessionManager.shared.start(call: RLClient.GetPlayer(tag: "player", query: ["apikey": BaseConfig.shared.apiKey, "unique_id": "76561198118155495", "platform_id": "1"]), completion: { (result) in
                     result.onSuccess { value in
                         let playerData = value.player
-
-                        if let avatarURLString = playerData.avatar {
-                            SDWebImageDownloader.shared().downloadImage(with: URL(string: avatarURLString)!, options: SDWebImageDownloaderOptions.lowPriority, progress: nil, completed: { (image, data, err, finished) in
-                                if let image = image {
-                                    if finished {
-    
-        
-                                        let sideMenuVC = SideMenuViewController(headerImage: image)
-                                        let menuLeftNavigationController = UISideMenuNavigationController(rootViewController: sideMenuVC)
-                                        SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
-                                        SideMenuManager.default.menuWidth = max(round(min((UIScreen.main.bounds.width), (UIScreen.main.bounds.height)) * 0.80), 240)
-                                        
-                                        self.navigationItem.leftBarButtonItem = self.leftBarItem
-                                        self.navigationItem.rightBarButtonItems = [ self.rightBarItem, self.modeBarItem ]
-                                    }
+                        
+                        FirebaseManager.shared.fetchUsers(completion: { (players, err) in
+                            if let err = err {
+                                print(err.localizedDescription)
+                            }
+                            else {
+                                
+                                
+                                
+                                if let avatarURLString = playerData.avatar {
+                                    SDWebImageDownloader.shared().downloadImage(with: URL(string: avatarURLString)!, options: SDWebImageDownloaderOptions.lowPriority, progress: nil, completed: { (image, data, err, finished) in
+                                        if let image = image {
+                                            if finished {
+                                                let sideMenuVC = SideMenuViewController(headerImage: image, name: playerData.displayName, platform: playerData.platform.name)
+                                                let menuLeftNavigationController = UISideMenuNavigationController(rootViewController: sideMenuVC)
+                                                SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
+                                                SideMenuManager.default.menuWidth = max(round(min((UIScreen.main.bounds.width), (UIScreen.main.bounds.height)) * 0.80), 240)
+                                                
+                                                self.navigationItem.leftBarButtonItem = self.leftBarItem
+                                                self.navigationItem.rightBarButtonItems = [ self.rightBarItem, self.modeBarItem ]
+                                            }
+                                        }
+                                    })
                                 }
-                            })
-                        }
+                            }
+                        })
+                        
+                 
                         }.onError { err in
                             self.showAlert(title: "Error", message: err.localizedDescription, completion: {})
                     }
