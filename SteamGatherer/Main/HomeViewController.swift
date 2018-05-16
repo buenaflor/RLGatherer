@@ -13,17 +13,6 @@ import SideMenu
 
 class HomeViewController: MainController, UITableViewDelegate, UITableViewDataSource {
     
-    lazy var tableView: UITableView = {
-        let tv = UITableView()
-        tv.delegate = self
-        tv.dataSource = self
-        tv.register(PlayerTableViewCell.self)
-        tv.bounces = false
-        tv.backgroundColor = UIColor.RL.mainDarker
-        tv.tableFooterView = UIView()
-        return tv
-    }()
-    
     lazy var platformImageView: UIImageView = {
         let iv = UIImageView()
         iv.setImage(#imageLiteral(resourceName: "RL_steam_50"), with: .alwaysTemplate, tintColor: .white)
@@ -60,6 +49,9 @@ class HomeViewController: MainController, UITableViewDelegate, UITableViewDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
         
         rankDescLabel.text = "Rank"
         playerDescLabel.text = "Player"
@@ -106,7 +98,7 @@ class HomeViewController: MainController, UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return players.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -115,31 +107,34 @@ class HomeViewController: MainController, UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(PlayerTableViewCell.self, for: indexPath)
+        let player = players[indexPath.row]
         
-        cell.configureWithModel("")
+        cell.configureWithModel(player)
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow()
+        let player = players[indexPath.row]
         
         let playerVC = PlayerViewController(presentationStyle: .push)
+        playerVC.configureWithModel(player)
         navigationController?.pushViewController(playerVC, animated: true)
     }
 }
 
 
 class PlayerTableViewCell: UITableViewCell, Configurable {
-    var model: String?
+    var model: Player?
     
-    func configureWithModel(_: String) {
-        customImageView.image = #imageLiteral(resourceName: "Diamond II")
-        nameLabel.text = "ginooo"
-        rankLabel.text = "DIA 2"
-        modeLabel.text = "3v3"
-        platformLabel.text = "Steam"
-        gatherLabel.text = "Team Up"
+    func configureWithModel(_ player: Player) {
+        customImageView.image = UIImage(named: player.rank)
+        nameLabel.text = player.name
+        rankLabel.text = player.shortedTierName
+        modeLabel.text = player.shortedMode
+        platformLabel.text = player.platform
+        gatherLabel.text = player.gatherAction
     }
     
     let customImageView = UIImageView()
@@ -179,7 +174,7 @@ class PlayerTableViewCell: UITableViewCell, Configurable {
         add(subview: rankLabel) { (v, p) in [
             v.topAnchor.constraint(equalTo: nameLabel.bottomAnchor),
             v.leadingAnchor.constraint(equalTo: customImageView.trailingAnchor, constant: 20),
-            v.trailingAnchor.constraint(equalTo: modeLabel.leadingAnchor, constant: -5)
+            v.trailingAnchor.constraint(equalTo: modeLabel.leadingAnchor)
             ]}
         
         add(subview: gatherLabel) { (v, p) in [
@@ -196,6 +191,17 @@ class PlayerTableViewCell: UITableViewCell, Configurable {
 
 class MainController: BaseViewController, Loadable {
     
+    var players = [Player]()
+    
+    lazy var tableView: UITableView = {
+        let tv = UITableView()
+        tv.register(PlayerTableViewCell.self)
+        tv.bounces = false
+        tv.backgroundColor = UIColor.RL.mainDarker
+        tv.tableFooterView = UIView()
+        return tv
+    }()
+    
     func loadData() {
         guard let userUID = Auth.auth().currentUser?.uid else { return }
         FirebaseManager.shared.fetchCurrentUser(uid: (userUID)) { (player, err) in
@@ -209,13 +215,16 @@ class MainController: BaseViewController, Loadable {
                     result.onSuccess { value in
                         let playerData = value.player
                         
-                        FirebaseManager.shared.fetchUsers(completion: { (players, err) in
+                        FirebaseManager.shared.fetchUsers(uid: userUID, completion: { (players, err) in
                             if let err = err {
                                 print(err.localizedDescription)
                             }
                             else {
                                 
-                                
+                                if let players = players {
+                                    self.players = players
+                                    self.tableView.reloadData()
+                                }
                                 
                                 if let avatarURLString = playerData.avatar {
                                     SDWebImageDownloader.shared().downloadImage(with: URL(string: avatarURLString)!, options: SDWebImageDownloaderOptions.lowPriority, progress: nil, completed: { (image, data, err, finished) in

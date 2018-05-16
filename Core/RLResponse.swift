@@ -92,6 +92,48 @@ extension Tier {
     }
 }
 
+extension Player {
+    var shortedTierName: String {
+        if rank.contains("Platinum") {
+            return rank.replacingOccurrences(of: "Platinum", with: "Plat.")
+        }
+        if rank.contains("Grand Champion") {
+            return "GC"
+        }
+        if rank.contains("Champion") {
+            return rank.replacingOccurrences(of: "Champion", with: "Champ.")
+        }
+        if rank.contains("Diamond") {
+            return rank.replacingOccurrences(of: "Diamond", with: "Dia.")
+        }
+        if rank.contains("Unranked") {
+            return "UNR"
+        }
+        else {
+            return rank
+        }
+    }
+    
+    var shortedMode: String {
+        if mode.contains("Duel") {
+            return "1v1"
+        }
+        if mode.contains("Doubles") {
+            return "2v2"
+        }
+        if mode.contains("Standard") {
+            return "3v3"
+        }
+        if mode.contains("Chaos") {
+            return "4v4"
+        }
+        if mode.contains("Mashup") {
+            return "Mutator"
+        }
+        else { return mode }
+    }
+}
+
 
 // MARK: - Get Playlists
 

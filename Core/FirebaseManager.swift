@@ -64,7 +64,7 @@ class FirebaseManager {
         }
     }
     
-    func fetchUsers(completion: @escaping ([Player]?, Error?) -> Void) {
+    func fetchUsers(uid: String, completion: @escaping ([Player]?, Error?) -> Void) {
         db.collection(Firebase.Key.collection).getDocuments { (querySnapshot, err) in
             if let err = err {
                 completion(nil, err)
@@ -76,7 +76,7 @@ class FirebaseManager {
                     })
                 }) {
                     let filteredPlayers = players.filter({ (player) in
-                        if player.gatherAction.isEmpty || player.mode.isEmpty || player.rank.isEmpty {
+                        if player.gatherAction.isEmpty || player.mode.isEmpty || player.rank.isEmpty || player.id == uid {
                             return false
                         }
                         return true
